@@ -20,9 +20,9 @@ public interface DataFactoryService extends Remote {
 
 	public DataService getCommodityData() throws RemoteException;
 
-	public DataService getCommodityManageData() throws RemoteException;
+	public DataService getCommoditySortData() throws RemoteException;
 
-	public DataService getFundData() throws RemoteException;
+	public DataService getAccountBillData() throws RemoteException;
 
 	public DataService getInventoryData() throws RemoteException;
 
@@ -35,4 +35,6 @@ public interface DataFactoryService extends Remote {
 	public DataService getSaleData() throws RemoteException;
 
 	public DataService getUserData() throws RemoteException;
+	
+	public DataService getCashBillData() throws RemoteException;
 }

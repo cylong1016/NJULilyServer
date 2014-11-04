@@ -61,13 +61,6 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryServi
 	}
 
 	/**
-	 * @see dataservice.DataFactoryService#getCommodityManageData()
-	 */
-	public DataService getCommodityManageData() throws RemoteException {
-		return null;
-	}
-
-	/**
 	 * @see dataservice.DataFactoryService#getFundData()
 	 */
 	public DataService getFundData() throws RemoteException {
@@ -114,6 +107,27 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryServi
 	 */
 	public DataService getUserData() throws RemoteException {
 		return new UserData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getCommoditySortData()
+	 */
+	public DataService getCommoditySortData() throws RemoteException {
+		return null;
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getAccountBillData()
+	 */
+	public DataService getAccountBillData() throws RemoteException {
+		return null;
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getCashBillData()
+	 */
+	public DataService getCashBillData() throws RemoteException {
+		return null;
 	}
 
 }

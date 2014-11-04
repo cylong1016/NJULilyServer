@@ -1,7 +1,5 @@
 package dataservice;
 
-import java.rmi.RemoteException;
-
 import message.ResultMessage;
 import po.CommodityManagePO;
 
@@ -10,34 +8,34 @@ import po.CommodityManagePO;
  * @author cylong
  * @version Oct 26, 2014 3:55:35 PM
  */
-public interface CommodityManageDataServer extends DataService {
+public interface CommoditySortDataService extends DataService {
 
 	/**
 	 * 插入一个商品分类节点
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(CommodityManagePO po) throws RemoteException;
+	public ResultMessage insert(CommodityManagePO po);
 
 	/**
 	 * 用分类名称查找分类
-	 * @param id
+	 * @param name
 	 * @return 商品分类节点
 	 */
-	public CommodityManagePO find(String id) throws RemoteException;
+	public CommodityManagePO find(String name);
 
 	/**
-	 * 删除分类
-	 * @param id
+	 * 以分类ID删除分类
+	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String id) throws RemoteException;
+	public ResultMessage delete(String ID);
 
 	/**
 	 * 更新分类
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage update(CommodityManagePO po) throws RemoteException;
+	public ResultMessage update(CommodityManagePO po);
 
 }

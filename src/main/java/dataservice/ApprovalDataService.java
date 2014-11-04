@@ -1,12 +1,10 @@
 package dataservice;
 
-import java.rmi.RemoteException;
-
 import message.ResultMessage;
 import po.PersistentObject;
 
 /**
- * 提供单据的集体载入、保存、查看修改操作
+ * 提供需要审批的单据的集体载入、保存、查看修改操作
  * @author cylong
  * @version Oct 26, 2014 3:51:31 PM
  */
@@ -17,6 +15,6 @@ public interface ApprovalDataService extends DataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage update(PersistentObject po) throws RemoteException;
+	public ResultMessage update(PersistentObject po);
 
 }
