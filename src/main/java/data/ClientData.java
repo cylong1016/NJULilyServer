@@ -4,6 +4,8 @@ import io.DefineList;
 
 import java.util.ArrayList;
 
+import common.Common;
+
 import message.ResultMessage;
 import po.ClientPO;
 import dataenum.FindTypeClient;
@@ -165,6 +167,8 @@ public class ClientData implements ClientDataService {
 			clients.addAll(find(keywords, FindTypeClient.SALESMAN));
 			break;
 		}
+		// 删除List中重复的对象
+		Common.deleteRep(clients);
 		return clients;
 	}
 
