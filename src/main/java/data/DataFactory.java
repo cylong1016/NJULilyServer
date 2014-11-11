@@ -50,7 +50,7 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryServi
 	 * @see dataservice.DataFactoryService#getClientData()
 	 */
 	public DataService getClientData() throws RemoteException {
-		return null;
+		return new ClientData();
 	}
 
 	/**

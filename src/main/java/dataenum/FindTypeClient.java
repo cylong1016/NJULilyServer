@@ -2,7 +2,7 @@ package dataenum;
 
 public enum FindTypeClient {
 	ID,
-	KIND,
+	CATEGORY,
 	LEVEL,
 	NAME,
 	PHONE,

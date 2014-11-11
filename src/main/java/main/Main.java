@@ -24,7 +24,7 @@ public class Main {
 			// 绑定的URL标准格式为：rmi://host:port/name(其中协议名可以省略，下面两种写法都是正确的） 
 			Naming.bind("rmi://127.0.0.1:1994/DataFactory", factory);
 			// Naming.bind("//localhost:8888/DataFactory",factory); 
-			System.out.println(">>>>>INFO:远程HelloServer对象绑定成功！");
+			System.out.println(">>>>>INFO:远程服务器启动！");
 		} catch (RemoteException e) {
 			System.out.println("创建远程对象发生异常！");
 			e.printStackTrace();

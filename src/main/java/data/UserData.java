@@ -1,10 +1,13 @@
 package data;
 
+import java.util.ArrayList;
+
 import message.ResultMessage;
 import po.UserPO;
 import dataservice.UserDataService;
 
 /**
+ * @see dataservice.UserDataService
  * @author cylong
  * @version Nov 4, 2014 9:06:25 PM
  */
@@ -48,6 +51,13 @@ public class UserData implements UserDataService {
 	 * @see dataservice.UserDataService#update(po.UserPO)
 	 */
 	public ResultMessage update(UserPO po) {
+		return null;
+	}
+
+	/**
+	 * @see dataservice.UserDataService#show()
+	 */
+	public ArrayList<UserPO> show() {
 		return null;
 	}
 

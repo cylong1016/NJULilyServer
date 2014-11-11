@@ -68,7 +68,7 @@ public class DefineList<E> implements Serializable {
 	public DefineList(String filePath) {
 		this.filePath = filePath;
 		// 每次运行程序的时候自动读取数据
-		this.loadFromLocal();
+		this.load();
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class DefineList<E> implements Serializable {
 	 * @version Oct 13, 2014 12:21:22 AM
 	 */
 	@SuppressWarnings("unchecked")
-	private void loadFromLocal() {
+	private void load() {
 		/* 没有该文件夹就创建 */
 		File dataFolder = new File("data");
 		if (!dataFolder.isDirectory()) {
@@ -118,7 +118,7 @@ public class DefineList<E> implements Serializable {
 	 * @author cylong
 	 * @version Oct 13, 2014 12:23:13 AM
 	 */
-	public void saveToLocal() {
+	public void save() {
 		/* 将商品集合存入文件中 */
 		ObjectOutputStream oos = null;
 		try {
@@ -135,21 +135,4 @@ public class DefineList<E> implements Serializable {
 		}
 	}
 	
-	/**
-	 * 将数据【集合】存入服务器，使用序列化的方式
-	 * @author cylong
-	 * @version Oct 26, 2014  1:08:15 AM
-	 */
-	public void saveToServer() {
-		// TODO 保存数据到服务器
-	}
-	
-	/**
-	 * 从服务器读取数据【集合】，然后保存到ArrayList中
-	 * @author cylong
-	 * @version Oct 26, 2014  1:10:27 AM
-	 */
-	public void loadFromServer() {
-		// TODO 从服务器读取数据
-	}
 }
