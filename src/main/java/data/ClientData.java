@@ -89,7 +89,7 @@ public class ClientData implements ClientDataService {
 				}
 			}
 			break;
-		case CATEGORY:
+		case KIND:
 			for(ClientPO client : clientList.getInnerList()) {
 				if(client.getCategory().toString().toLowerCase().contains(keywords)) {
 					clients.add(client);
@@ -147,7 +147,7 @@ public class ClientData implements ClientDataService {
 			break;
 		case SALESMAN:
 			for(ClientPO client : clientList.getInnerList()) {
-				if(client.getSalesman().getUsername().toLowerCase().contains(keywords)) {
+				if(client.getSalesman().toLowerCase().contains(keywords)) {
 					clients.add(client);
 				}
 			}
@@ -155,7 +155,7 @@ public class ClientData implements ClientDataService {
 		default:
 			clients.addAll(find(keywords, FindTypeClient.ID));
 			clients.addAll(find(keywords, FindTypeClient.ADDRESS));
-			clients.addAll(find(keywords, FindTypeClient.CATEGORY));
+			clients.addAll(find(keywords, FindTypeClient.KIND));
 			clients.addAll(find(keywords, FindTypeClient.EMAIL));
 			clients.addAll(find(keywords, FindTypeClient.LEVEL));
 			clients.addAll(find(keywords, FindTypeClient.NAME));
