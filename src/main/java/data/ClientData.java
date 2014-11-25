@@ -19,31 +19,54 @@ public class ClientData implements ClientDataService {
 
 	private DefineList<ClientPO> clientList;
 	private String filePath = "data/ClientList";
+	private String currentID;
+	
+	public ClientData() {
+		init();
+	}
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	public void init() {
 		clientList = new DefineList<ClientPO>(filePath);
+		if(clientList.size() == 0) {
+			currentID = "10000"; // 客户初始id
+		}
 	}
 
 	/**
 	 * @see dataservice.DataService#getID()
 	 */
 	public String getID() {
-		return null;
+		currentID = clientList.get(clientList.size() - 1).getID();
+		long id = Long.parseLong(currentID);
+		currentID = String.valueOf(id + 1);
+		return currentID;
 	}
 
 	/**
 	 * @see dataservice.ClientDataService#insert(po.ClientPO)
 	 */
 	public ResultMessage insert(ClientPO po) {
-		return null;
+		for(int i = 0; i < clientList.size(); i++) {
+			if(po.equals(clientList.get(i))) {
+				return ResultMessage.FAILURE;
+			}
+		}
+		clientList.add(po);
+		clientList.save();
+		return ResultMessage.SUCCESS;
 	}
 
 	/**
 	 * @see dataservice.ClientDataService#delete(java.lang.String)
 	 */
 	public ResultMessage delete(String ID) {
+		for(int i = 0; i < clientList.size(); i++) {
+			if(clientList.get(i).getID().equals(ID)) {
+				
+			}
+		}
 		return null;
 	}
 
@@ -70,7 +93,7 @@ public class ClientData implements ClientDataService {
 		switch(type) {
 		case ID:
 			for(ClientPO client : clientList.getInnerList()) {
-				if(client.getId().toLowerCase().contains(keywords)) {
+				if(client.getID().toLowerCase().contains(keywords)) {
 					clients.add(client);
 				}
 			}
