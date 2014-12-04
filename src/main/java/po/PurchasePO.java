@@ -2,92 +2,99 @@ package po;
 
 import java.util.ArrayList;
 
+import dataenum.BillState;
+import dataenum.BillType;
 import dataenum.Storage;
-
 
 /**
  * 进货单和进货退货单持久化对象
  * @author cylong
- * @version Oct 26, 2014  1:41:14 PM
+ * @version Oct 26, 2014 1:41:14 PM
  */
 /**
- * 
  * @author Zing
  * @version 2014年10月31日下午4:52:15
  */
-public class PurchasePO extends PersistentObject{
-	/**
-	 * 
-	 */
+public class PurchasePO extends PersistentObject {
+
 	private static final long serialVersionUID = 1L;
 	/** 单据编号 */
-	private String id;	
+	private String ID;
+	/** 客户ID */
+	private String clientID;
 	/** 客户 */
-	private ClientPO client;
+	private String client;
 	/** 仓库 */
 	private Storage storage;
 	/** 操作员 */
-	private UserPO user;	
+	private String user;
 	/** 商品列表清单 */
-	private ArrayList<SaleCommodityItemPO> commodities;
-	/** 总额*/
-	private int sumPrice;
+	private ArrayList<CommodityItemPO> commodities;
+	/** 总额 */
+	private double beforePrice;
 	/** 备注 */
 	private String remark;
-	
-	public PurchasePO(String ID, ClientPO client, UserPO user,  Storage storage, 
-			ArrayList<SaleCommodityItemPO> commodities, int sumPrice){
+	/** 单据类型 */
+	private BillType type;
+	/** 单据状态 */
+	private BillState state;
+
+	public PurchasePO(String ID, String clientID, String client, String user, Storage storage, ArrayList<CommodityItemPO> commodities, double beforePrice, String remark, BillType type) {
 		super(ID);
-		this.id = ID;
+		this.ID = ID;
+		this.clientID = clientID;
 		this.client = client;
 		this.user = user;
 		this.storage = storage;
 		this.commodities = commodities;
-		this.sumPrice = sumPrice;
+		this.beforePrice = beforePrice;
+		this.type = type;
+		this.remark = remark;
+		this.state = BillState.APPROVALING;
 	}
-	
-	public String getId() {
-		return id;
+
+	public String getClientID() {
+		return this.clientID;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public BillState getState() {
+		return this.state;
 	}
-	public ClientPO getClient() {
+
+	public void setState(BillState state) {
+		this.state = state;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public String getClient() {
 		return client;
 	}
-	public void setClient(ClientPO client) {
-		this.client = client;
-	}
+
 	public Storage getStorage() {
 		return storage;
 	}
-	public void setStorage(Storage storage) {
-		this.storage = storage;
-	}
-	public UserPO getUser() {
+
+	public String getUser() {
 		return user;
 	}
-	public void setUser(UserPO user) {
-		this.user = user;
-	}
-	public ArrayList<SaleCommodityItemPO> getCommodities() {
+
+	public ArrayList<CommodityItemPO> getCommodities() {
 		return commodities;
 	}
-	public void setCommodities(ArrayList<SaleCommodityItemPO> commodities) {
-		this.commodities = commodities;
+
+	public double getBeforePrice() {
+		return beforePrice;
 	}
-	public int getSumPrice() {
-		return sumPrice;
-	}
-	public void setSumPrice(int sumPrice) {
-		this.sumPrice = sumPrice;
-	}
+
 	public String getRemark() {
 		return remark;
 	}
-	public void setRemark(String remark) {
-		this.remark = remark;
+
+	public BillType getType() {
+		return this.type;
 	}
-	
-	
+
 }

@@ -6,7 +6,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import data.DataFactory;
+import server.data.DataFactory;
 
 /**
  * @author cylong

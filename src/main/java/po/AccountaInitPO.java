@@ -2,12 +2,10 @@ package po;
 
 import java.util.ArrayList;
 
-
-
 /**
  * 期初建账持久化对象
  * @author cylong
- * @version Oct 26, 2014  2:21:52 PM
+ * @version Oct 26, 2014 2:21:52 PM
  */
 /**
  * 这个系统是可以支持建多套账的，每套帐在新建的时候都要经过期初建账这一环节，可以理解为一套帐的初始化操作。
@@ -20,14 +18,25 @@ import java.util.ArrayList;
  * @author Zing
  * @version 2014年11月2日下午3:54:10
  */
-public class AccountaInitPO {
+public class AccountaInitPO extends PersistentObject {
+
+	/** serialVersionUID */
+	private static final long serialVersionUID = -2898348688803208513L;
+	
+	private String date;
+	
+	private ArrayList<CommoditySortPO> commoditySorts;
+
 	private ArrayList<CommodityPO> commodities;
-	
+
 	private ArrayList<ClientPO> clients;
-	
+
 	private ArrayList<AccountPO> accounts;
-	
-	public AccountaInitPO(ArrayList<CommodityPO> commodities, ArrayList<ClientPO> clients, ArrayList<AccountPO> accounts){
+
+	public AccountaInitPO(String ID, String date, ArrayList<CommoditySortPO> commoditySorts, ArrayList<CommodityPO> commodities, ArrayList<ClientPO> clients, ArrayList<AccountPO> accounts) {
+		super(ID);
+		this.date = date;
+		this.commoditySorts = commoditySorts;
 		this.commodities = commodities;
 		this.clients = clients;
 		this.accounts = accounts;
@@ -37,24 +46,21 @@ public class AccountaInitPO {
 		return commodities;
 	}
 
-	public void setCommodities(ArrayList<CommodityPO> commodities) {
-		this.commodities = commodities;
-	}
-
 	public ArrayList<ClientPO> getClients() {
 		return clients;
-	}
-
-	public void setClients(ArrayList<ClientPO> clients) {
-		this.clients = clients;
 	}
 
 	public ArrayList<AccountPO> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(ArrayList<AccountPO> accounts) {
-		this.accounts = accounts;
+	public ArrayList<CommoditySortPO> getCommoditySorts() {
+		return commoditySorts;
 	}
-	
+
+	public String getDate() {
+		return date;
+	}
+
+
 }

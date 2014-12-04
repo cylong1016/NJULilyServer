@@ -2,6 +2,8 @@ package po;
 
 import java.util.ArrayList;
 
+import dataenum.BillState;
+
 /**
  * 现金费用单
  * 管理报销等现金操作，单据中包含：单据编号（XJFYD-yyyyMMdd-xxxxx）,
@@ -10,71 +12,57 @@ import java.util.ArrayList;
  * @author Zing
  * @version 2014年10月31日下午5:55:13
  */
-public class CashBillPO extends PersistentObject{
-	/**
-	 * 
-	 */
+public class CashBillPO extends PersistentObject {
+
 	private static final long serialVersionUID = 1L;
 	/** 编号 */
-	private String id;
+	private String ID;
 	/** 操作员 */
-	private UserPO user;
+	private String user;
 	/** 银行账户 */
-	private AccountPO account;
-	/**  条目清单*/
+	private String account;
+	/** 条目清单 */
 	private ArrayList<CashItemPO> bills;
 	/** 汇款总额 */
-	private int sumMoney;
-	
-	public CashBillPO(String id, UserPO user, AccountPO account, ArrayList<CashItemPO> bills, int sumMoney) {
-		super(id);
-		this.id = id;
+	private double total;
+	/** 单据状态 */
+	private BillState state;
+
+	public CashBillPO(String ID, String user, String account, ArrayList<CashItemPO> bills, double total) {
+		super(ID);
 		this.user = user;
 		this.account = account;
 		this.bills = bills;
-		this.sumMoney = sumMoney;
+		this.total = total;
+		this.state = BillState.APPROVALING;
 	}
 
-	public String getId() {
-		return id;
+	public BillState getState() {
+		return this.state;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setState(BillState state) {
+		this.state = state;
 	}
 
-	public UserPO getUser() {
+	public String getID() {
+		return ID;
+	}
+
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(UserPO user) {
-		this.user = user;
-	}
-
-	public AccountPO getAccount() {
+	public String getAccount() {
 		return account;
-	}
-
-	public void setAccount(AccountPO account) {
-		this.account = account;
 	}
 
 	public ArrayList<CashItemPO> getBills() {
 		return bills;
 	}
 
-	public void setBills(ArrayList<CashItemPO> bills) {
-		this.bills = bills;
+	public double getTotal() {
+		return total;
 	}
 
-	public int getSumMoney() {
-		return sumMoney;
-	}
-
-	public void setSumMoney(int sumMoney) {
-		this.sumMoney = sumMoney;
-	}
-	
-	
-	
 }

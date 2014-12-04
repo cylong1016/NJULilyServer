@@ -37,7 +37,7 @@ public class ClientPO extends PersistentObject {
 	private String salesman;
 
 	/**
-	 * @param id 客户id
+	 * @param ID 客户ID
 	 * @param category 客户类别：进货商、销售商
 	 * @param level 客户级别：1-5（vip）
 	 * @param name 客户姓名
@@ -50,9 +50,8 @@ public class ClientPO extends PersistentObject {
 	 * @author cylong
 	 * @version Oct 26, 2014 12:55:54 PM
 	 */
-	public ClientPO(String id, ClientCategory category, ClientLevel level, String name, String phone, String address, 
-			String post, String email, double receivableLimit, String salesman) {
-		super(id);
+	public ClientPO(String ID, ClientCategory category, ClientLevel level, String name, String phone, String address, String post, String email, double receivableLimit, String salesman) {
+		super(ID);
 		this.category = category;
 		this.level = level;
 		this.name = name;
@@ -62,6 +61,37 @@ public class ClientPO extends PersistentObject {
 		this.email = email;
 		this.receivableLimit = receivableLimit;
 		this.salesman = salesman;
+	}
+
+	/**
+	 * 名字相同的客户就是重复的客户
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClientPO other = (ClientPO)obj;
+		if (this.name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!this.name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	/**
+	 * 模糊查询时候使用
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return ID + category + level + name + phone + address + post + email + receivable + payable + receivableLimit
+				+ salesman;
 	}
 
 	public ClientCategory getCategory() {

@@ -1,55 +1,68 @@
 package po;
 
+import java.util.ArrayList;
 
 /**
  * 商品分类持久化对象
  * @author cylong
- * @version Oct 26, 2014  2:22:18 PM
+ * @version Oct 26, 2014 2:22:18 PM
  */
-public class CommoditySortPO extends PersistentObject{
-	
-	
-	/**
-	 * 
-	 */
+public class CommoditySortPO extends PersistentObject {
+
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	
-	private CommoditySortPO father;
-	
-	private CommoditySortPO children;
-	
-	public CommoditySortPO(String ID, String name, CommoditySortPO father, CommoditySortPO children){
+
+	private String fatherID;
+
+	private ArrayList<String> childrenID;
+
+	private ArrayList<String> commoditiesID;
+
+	public CommoditySortPO(String ID, String name, String fatherID, ArrayList<String> childrenID, ArrayList<String> commoditiesID) {
 		super(ID);
+		this.ID = ID;
 		this.name = name;
-		this.father = father;
-		this.children = children;
+		this.fatherID = fatherID;
+		this.childrenID = childrenID;
+		this.commoditiesID = commoditiesID;
+	}
+
+	public String getID() {
+		return this.ID;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getFatherID() {
+		return fatherID;
 	}
 
-	public CommoditySortPO getFather() {
-		return father;
+	public ArrayList<String> getChildrenID() {
+		return childrenID;
 	}
 
-	public void setFather(CommoditySortPO father) {
-		this.father = father;
+	public ArrayList<String> getCommoditiesID() {
+		return commoditiesID;
 	}
 
-	public CommoditySortPO getChildren() {
-		return children;
+	public void addChildID(String childID) {
+		this.commoditiesID.add(childID);
 	}
 
-	public void setChildren(CommoditySortPO children) {
-		this.children = children;
+	public void addCommodityID(String commodityID) {
+		this.commoditiesID.add(commodityID);
 	}
-	
-	
+
+	public void removeCommodity(String ID) {
+		for(int i = 0; i < commoditiesID.size(); i++) {
+			if (ID == commoditiesID.get(i)) {
+				commoditiesID.remove(i);
+				return;
+			}
+		}
+	}
+
 }

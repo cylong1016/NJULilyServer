@@ -3,6 +3,21 @@ package dataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import dataservice.accountbilldataservice.AccountBillDataService;
+import dataservice.accountdataservice.AccountDataService;
+import dataservice.accountinitdataservice.AccountaInitDataService;
+import dataservice.approvaldataservice.ApprovalDataService;
+import dataservice.cashbilldataservice.CashBillDataService;
+import dataservice.clientdataservice.ClientDataService;
+import dataservice.commoditydataservice.CommodityDataService;
+import dataservice.commoditysortdataservice.CommoditySortDataService;
+import dataservice.inventorydataservice.InventoryDataService;
+import dataservice.promotiondataservice.PromotionDataService;
+import dataservice.purchasedataservice.PurchaseDataService;
+import dataservice.recorddataservice.RecordDataService;
+import dataservice.saledataservice.SaleDataService;
+import dataservice.userdataservice.UserDataService;
+
 /**
  * 抽象工厂，返回数据层模块接口
  * @author cylong
@@ -10,31 +25,31 @@ import java.rmi.RemoteException;
  */
 public interface DataFactoryService extends Remote {
 
-	public DataService getAccountaInitData() throws RemoteException;
+	public AccountaInitDataService getAccountaInitData() throws RemoteException;
 
-	public DataService getAccountData() throws RemoteException;
+	public AccountDataService getAccountData() throws RemoteException;
 
-	public DataService getApprovalData() throws RemoteException;
+	public ApprovalDataService getApprovalData() throws RemoteException;
 
-	public DataService getClientData() throws RemoteException;
+	public ClientDataService getClientData() throws RemoteException;
 
-	public DataService getCommodityData() throws RemoteException;
+	public CommodityDataService getCommodityData() throws RemoteException;
 
-	public DataService getCommoditySortData() throws RemoteException;
+	public CommoditySortDataService getCommoditySortData() throws RemoteException;
 
-	public DataService getAccountBillData() throws RemoteException;
-
-	public DataService getInventoryData() throws RemoteException;
-
-	public DataService getPromotionData() throws RemoteException;
-
-	public DataService getPurchaseData() throws RemoteException;
-
-	public DataService getRecordData() throws RemoteException;
-
-	public DataService getSaleData() throws RemoteException;
-
-	public DataService getUserData() throws RemoteException;
+	public AccountBillDataService getAccountBillData() throws RemoteException;
 	
-	public DataService getCashBillData() throws RemoteException;
+	public InventoryDataService getInventoryData() throws RemoteException;
+
+	public PromotionDataService getPromotionData() throws RemoteException;
+
+	public PurchaseDataService getPurchaseData() throws RemoteException;
+
+	public RecordDataService getRecordData() throws RemoteException;
+
+	public SaleDataService getSaleData() throws RemoteException;
+
+	public UserDataService getUserData() throws RemoteException;
+	
+	public CashBillDataService getCashBillData() throws RemoteException;
 }

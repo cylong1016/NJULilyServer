@@ -13,8 +13,8 @@ public class CommodityPO extends PersistentObject {
 	private String name;
 	/** 商品型号 */
 	private String type;
-	/** 商品分类 */
-	private CommoditySortPO sort;
+	/** 商品分类ID */
+	private String sortID;
 	/** 商品库存数量 */
 	private int inventoryNum;
 	/** 商品进价 */
@@ -25,9 +25,16 @@ public class CommodityPO extends PersistentObject {
 	private double recentPurPrice;
 	/** 商品最近售价 */
 	private double recentSalePrice;
+	/** 商品警戒数量 */
+	private int alarmNumber;
+	
+	/** 每次销售后计算平均售价 */
+	private double aveSale;
+	/** 每次进货后计算平均进价 */
+	private double avePur;
 
 	/**
-	 * @param id 商品id
+	 * @param ID 商品ID
 	 * @param name 商品名称
 	 * @param type 商品类型
 	 * @param purPrice 商品默认进价
@@ -35,78 +42,133 @@ public class CommodityPO extends PersistentObject {
 	 * @author cylong
 	 * @version Oct 26, 2014 1:21:03 PM
 	 */
-	public CommodityPO(String id, String name, CommoditySortPO sort, String type, double purPrice, double salePrice) {
-		super(id);
+	public CommodityPO(String ID, String name, String sortID, String type, double purPrice, double salePrice, int alarmNumber) {
+		super(ID);
 		this.name = name;
 		this.type = type;
-		this.sort = sort;
+		this.sortID = sortID;
 		this.purPrice = purPrice;
 		this.salePrice = salePrice;
+		this.alarmNumber = alarmNumber;
+	}
+	
+	/**
+	 * 期初建账的商品信息
+	 * @param ID
+	 * @param name
+	 * @param type
+	 * @param sortID
+	 * @param aveSale
+	 * @param avePur
+	 */
+	public CommodityPO(String ID, String name, String type, String sortID, double aveSale, double avePur) {
+		super(ID);
+		this.ID = ID;
+		this.name = name;
+		this.type = type;
+		this.sortID = sortID;
+		this.aveSale = aveSale;
+		this.avePur = avePur;
+	}
+
+	/**
+	 * 模糊查询的时候使用
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return name + type + inventoryNum + purPrice + salePrice + recentPurPrice + recentSalePrice + alarmNumber + ID;
+	}
+
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommodityPO other = (CommodityPO)obj;
+		if (this.name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!this.name.equals(other.name))
+			return false;
+		if (this.type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!this.type.equals(other.type))
+			return false;
+		return true;
 	}
 
 	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		return name;
 	}
 
 	public String getType() {
-		return this.type;
+		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public String getSortID() {
+		return sortID;
 	}
 
 	public int getInventoryNum() {
-		return this.inventoryNum;
-	}
-
-	public void setInventoryNum(int inventoryNum) {
-		this.inventoryNum = inventoryNum;
+		return inventoryNum;
 	}
 
 	public double getPurPrice() {
-		return this.purPrice;
-	}
-
-	public void setPurPrice(double purPrice) {
-		this.purPrice = purPrice;
+		return purPrice;
 	}
 
 	public double getSalePrice() {
-		return this.salePrice;
-	}
-
-	public void setSalePrice(double salePrice) {
-		this.salePrice = salePrice;
+		return salePrice;
 	}
 
 	public double getRecentPurPrice() {
-		return this.recentPurPrice;
+		return recentPurPrice;
+	}
+
+	public double getRecentSalePrice() {
+		return recentSalePrice;
+	}
+
+	public int getAlarmNumber() {
+		return alarmNumber;
+	}
+
+	public void setAlarmNumber(int alarmNumber) {
+		this.alarmNumber = alarmNumber;
+	}
+
+	public double getAveSale() {
+		return aveSale;
+	}
+
+	public void setAveSale(double aveSale) {
+		this.aveSale = aveSale;
+	}
+
+	public double getAvePur() {
+		return avePur;
+	}
+
+	public void setAvePur(double avePur) {
+		this.avePur = avePur;
 	}
 
 	public void setRecentPurPrice(double recentPurPrice) {
 		this.recentPurPrice = recentPurPrice;
 	}
 
-	public double getRecentSalePrice() {
-		return this.recentSalePrice;
-	}
-
 	public void setRecentSalePrice(double recentSalePrice) {
 		this.recentSalePrice = recentSalePrice;
 	}
-
-	public CommoditySortPO getSort() {
-		return sort;
-	}
-
-	public void setSort(CommoditySortPO sort) {
-		this.sort = sort;
-	}
-
+	
+	
 
 }
