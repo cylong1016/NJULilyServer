@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import dataservice.accountbilldataservice.AccountBillDataService;
 import dataservice.accountdataservice.AccountDataService;
 import dataservice.accountinitdataservice.AccountaInitDataService;
-import dataservice.approvaldataservice.ApprovalDataService;
 import dataservice.cashbilldataservice.CashBillDataService;
 import dataservice.clientdataservice.ClientDataService;
 import dataservice.commoditydataservice.CommodityDataService;
@@ -14,7 +13,6 @@ import dataservice.commoditysortdataservice.CommoditySortDataService;
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.purchasedataservice.PurchaseDataService;
-import dataservice.recorddataservice.RecordDataService;
 import dataservice.saledataservice.SaleDataService;
 import dataservice.userdataservice.UserDataService;
 
@@ -29,8 +27,6 @@ public interface DataFactoryService extends Remote {
 
 	public AccountDataService getAccountData() throws RemoteException;
 
-	public ApprovalDataService getApprovalData() throws RemoteException;
-
 	public ClientDataService getClientData() throws RemoteException;
 
 	public CommodityDataService getCommodityData() throws RemoteException;
@@ -38,18 +34,16 @@ public interface DataFactoryService extends Remote {
 	public CommoditySortDataService getCommoditySortData() throws RemoteException;
 
 	public AccountBillDataService getAccountBillData() throws RemoteException;
-	
+
 	public InventoryDataService getInventoryData() throws RemoteException;
 
 	public PromotionDataService getPromotionData() throws RemoteException;
 
 	public PurchaseDataService getPurchaseData() throws RemoteException;
 
-	public RecordDataService getRecordData() throws RemoteException;
-
 	public SaleDataService getSaleData() throws RemoteException;
 
 	public UserDataService getUserData() throws RemoteException;
-	
+
 	public CashBillDataService getCashBillData() throws RemoteException;
 }

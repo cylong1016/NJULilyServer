@@ -1,0 +1,147 @@
+package data;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+import data.accountbilldata.AccountBillData;
+import data.accountdata.AccountData;
+import data.accountinitdata.AccountInitData;
+import data.cashbilldata.CashBillData;
+import data.clientdata.ClientData;
+import data.commoditydata.CommodityData;
+import data.commoditysortdata.CommoditySortData;
+import data.inventorydata.InventoryData;
+import data.promotiondata.PromotionData;
+import data.purchasedata.PurchaseData;
+import data.saledata.SaleData;
+import data.userdata.UserData;
+import dataservice.DataFactoryService;
+import dataservice.accountbilldataservice.AccountBillDataService;
+import dataservice.accountdataservice.AccountDataService;
+import dataservice.accountinitdataservice.AccountaInitDataService;
+import dataservice.cashbilldataservice.CashBillDataService;
+import dataservice.clientdataservice.ClientDataService;
+import dataservice.commoditydataservice.CommodityDataService;
+import dataservice.commoditysortdataservice.CommoditySortDataService;
+import dataservice.inventorydataservice.InventoryDataService;
+import dataservice.promotiondataservice.PromotionDataService;
+import dataservice.purchasedataservice.PurchaseDataService;
+import dataservice.saledataservice.SaleDataService;
+import dataservice.userdataservice.UserDataService;
+
+/**
+ * 抽象工厂，返回数据层模块接口
+ * @author cylong
+ * @version Nov 2, 2014 5:09:28 PM
+ */
+public class DataFactory extends UnicastRemoteObject implements DataFactoryService {
+
+	/** serialVersionUID */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version Nov 2, 2014 5:11:29 PM
+	 */
+	public DataFactory() throws RemoteException {
+		super();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getAccountaInitData()
+	 */
+	@Override
+	public AccountaInitDataService getAccountaInitData() throws RemoteException {
+		return new AccountInitData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getAccountData()
+	 */
+	@Override
+	public AccountDataService getAccountData() throws RemoteException {
+		return new AccountData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getClientData()
+	 */
+	@Override
+	public ClientDataService getClientData() throws RemoteException {
+		return new ClientData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getCommodityData()
+	 */
+	@Override
+	public CommodityDataService getCommodityData() throws RemoteException {
+		return new CommodityData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getCommoditySortData()
+	 */
+	@Override
+	public CommoditySortDataService getCommoditySortData() throws RemoteException {
+		return new CommoditySortData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getAccountBillData()
+	 */
+	@Override
+	public AccountBillDataService getAccountBillData() throws RemoteException {
+		return new AccountBillData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getInventoryData()
+	 */
+	@Override
+	public InventoryDataService getInventoryData() throws RemoteException {
+		return new InventoryData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getPromotionData()
+	 */
+	@Override
+	public PromotionDataService getPromotionData() throws RemoteException {
+		return new PromotionData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getPurchaseData()
+	 */
+	@Override
+	public PurchaseDataService getPurchaseData() throws RemoteException {
+		return new PurchaseData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getSaleData()
+	 */
+	@Override
+	public SaleDataService getSaleData() throws RemoteException {
+		return new SaleData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getUserData()
+	 */
+	@Override
+	public UserDataService getUserData() throws RemoteException {
+		return new UserData();
+	}
+
+	/**
+	 * @see dataservice.DataFactoryService#getCashBillData()
+	 */
+	@Override
+	public CashBillDataService getCashBillData() throws RemoteException {
+		return new CashBillData();
+	}
+
+}
