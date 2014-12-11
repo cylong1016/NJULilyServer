@@ -23,13 +23,13 @@ public class ServerFrame extends JFrame {
 	private TitlePanel title;
 
 	public ServerFrame() {
-		title = new TitlePanel();
+		title = new TitlePanel(this);
 		this.add(title);
 		this.setSize(UIConfig.WIDTH, UIConfig.HEIGHT);
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// this.setUndecorated(true);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 

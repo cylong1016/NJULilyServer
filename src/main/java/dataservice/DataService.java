@@ -1,14 +1,12 @@
 package dataservice;
 
-import java.io.Serializable;
-
 import po.PersistentObject;
 
 /**
  * @author cylong
  * @version Oct 26, 2014 7:00:12 PM
  */
-public interface DataService<PO extends PersistentObject> extends Serializable {
+public interface DataService<PO extends PersistentObject> {
 
 	/**
 	 * 初始化数据层接口的信息
