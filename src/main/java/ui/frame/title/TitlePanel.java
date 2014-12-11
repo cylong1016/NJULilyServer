@@ -1,14 +1,18 @@
 package ui.frame.title;
 
-import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.frame.ServerFrame;
+import config.SystemConfig;
 import config.UIConfig;
 
 /**
@@ -20,56 +24,64 @@ public class TitlePanel extends JPanel {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -5595756092214353675L;
-	
-	/** TitlePanel的高度 */
-	private int height = 40;
+
+	/** 按钮之间还有和边框的间隙 */
+	private int interval = (UIConfig.TITLE_HEIGHT - UIConfig.TITLE_BTN_H) / 2;
+	/** 关闭按钮x坐标 */
+	private int exitX = UIConfig.WIDTH - UIConfig.TITLE_BTN_W - interval;
+	/** 最小化按钮x坐标 */
+	private int minX = exitX - interval - UIConfig.TITLE_BTN_W;
 	/** 关闭按钮 */
 	private TitleButton exit;
 	/** 最小化按钮 */
 	private TitleButton min;
-	/** 按钮大小 */
-	private Dimension size = new Dimension(32, 32);
 	/** 主frame，主要为了最小化使用其对象 */
 	private ServerFrame frame;
-	
+
 	public TitlePanel(ServerFrame frame) {
 		this.frame = frame;
 		this.setLayout(null);
-		this.setSize(UIConfig.WIDTH, height);
-		this.setLocation(0, 0);
+		this.setOpaque(true);
+		this.setSize(UIConfig.WIDTH, UIConfig.TITLE_HEIGHT);
+		this.setBackground(Color.CYAN);
 		addTitleButton(); // 添加最大化最小化按钮
 	}
-	
-	private void addTitleButton() {
-		TitleButtonListener listener = new TitleButtonListener();
-		exit = new TitleButton();
-		exit.setSize(size);
-		exit.setLocation(UIConfig.WIDTH - exit.getWidth() - 1, 1);
-		exit.addActionListener(listener);
-		this.add(exit);
-		min = new TitleButton();
-		min.setSize(size);
-		min.setLocation(UIConfig.WIDTH - min.getWidth() * 2 - 2, 1);
-		min.addActionListener(listener);
-		this.add(min);
-	}
-	
+
 	@Override
 	public void paint(Graphics g) {
-		g.drawString("我是标题", 350, 30);
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2d.setFont(new Font("黑体", Font.PLAIN, 25));
+		g2d.drawString(SystemConfig.TITLE, 310, interval + UIConfig.TITLE_BTN_H);
 	}
-	
-	private class TitleButtonListener implements ActionListener {
+
+	private void addTitleButton() {
+		// 按钮监听
+		TitleButtonListener listener = new TitleButtonListener();
+		// 关闭按钮
+		exit = new TitleButton();
+		exit.setLocation(exitX, interval);
+		exit.addMouseListener(listener);
+		this.add(exit);
+		// 最小化按钮
+		min = new TitleButton();
+		min.setLocation(minX, interval);
+		min.addMouseListener(listener);
+		this.add(min);
+	}
+
+	private class TitleButtonListener extends MouseAdapter {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == exit) {
+		public void mouseClicked(MouseEvent e) {
+			if (e.getSource() == exit) {
 				System.exit(0);
-			} else if(e.getSource() == min) {
+			} else if (e.getSource() == min) {
 				frame.setExtendedState(JFrame.ICONIFIED);
 			}
 		}
-		
+
 	}
 
 }

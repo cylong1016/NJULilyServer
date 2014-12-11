@@ -33,6 +33,8 @@ import org.xml.sax.SAXException;
  */
 public class ParseXML implements Serializable {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 7128010034263910237L;
 	private Element theData;
 	private Element root;
 	private Document xmldoc;

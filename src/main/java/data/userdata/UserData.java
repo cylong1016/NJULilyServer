@@ -14,9 +14,6 @@ import dataservice.userdataservice.UserDataService;
  */
 public class UserData extends CommonData<UserPO> implements UserDataService {
 
-	/** serialVersionUID */
-	private static final long serialVersionUID = 4037781020386364454L;
-
 	/**
 	 * @see dataservice.DataService#init()
 	 */
