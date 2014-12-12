@@ -3,7 +3,7 @@ package ui.start;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import server.ServerManage;
+import server.RMIManage;
 import ui.ServerButton;
 import ui.ServerPanel;
 
@@ -27,10 +27,10 @@ public class StartPanel extends ServerPanel {
 	private int buttonW = 100;
 	private int buttonH = 60;
 	
-	private ServerManage server;
+	private RMIManage server;
 
 	public StartPanel() {
-		server = new ServerManage();
+		server = new RMIManage();
 		ButtonListener listener = new ButtonListener();
 		start = new ServerButton("启动");
 		start.setBounds(buttonX, buttonY, buttonW, buttonH);

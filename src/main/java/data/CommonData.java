@@ -18,6 +18,10 @@ import dataservice.CommonDataService;
  */
 public abstract class CommonData<PO extends PersistentObject> implements CommonDataService<PO> {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 7569104044064021328L;
+	
+	/** 保存PO的list */
 	protected DefineList<PO> poList;
 	/** 保存文件的路径 */
 	protected String filePath;

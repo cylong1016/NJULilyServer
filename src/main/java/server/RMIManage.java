@@ -16,7 +16,7 @@ import data.DataFactory;
  * @author cylong
  * @version 2014年12月12日 上午4:52:53
  */
-public class ServerManage {
+public class RMIManage {
 
 	/** 远程工厂对象 */
 	private DataFactory factory;
@@ -31,8 +31,8 @@ public class ServerManage {
 			// 把远程对象注册到RMI注册服务器上，并命名为xxx 
 			// 绑定的URL标准格式为：rmi://host:port/name(其中协议名可以省略，下面两种写法都是正确的） 
 			Naming.bind(RMI.URL, factory);
-//			System.out.println(">>>>>INFO:远程服务器启动！");
-//			System.out.println(">>>>>INFO:远程服务器正在运行！");
+			System.out.println(">>>>>INFO:远程服务器启动！");
+			System.out.println(">>>>>INFO:远程服务器正在运行！");
 		} catch (RemoteException e) {
 			System.out.println("创建远程对象发生异常！");
 			e.printStackTrace();
@@ -51,6 +51,6 @@ public class ServerManage {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(">>>>>INFO:远程服务器关闭！");
+		System.out.println(">>>>>INFO:远程服务器关闭！");
 	}
 }
