@@ -2,12 +2,14 @@ package data;
 
 import io.DefineList;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import common.Common;
-import common.ParseXML;
 import message.ResultMessage;
 import po.PersistentObject;
+import common.Common;
+import common.ParseXML;
 import dataenum.BillType;
 import dataservice.CommonDataService;
 
@@ -16,11 +18,11 @@ import dataservice.CommonDataService;
  * @author cylong
  * @version 2014年11月30日 上午10:43:58
  */
-public abstract class CommonData<PO extends PersistentObject> implements CommonDataService<PO> {
+public abstract class CommonData<PO extends PersistentObject> extends UnicastRemoteObject implements CommonDataService<PO> {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 7569104044064021328L;
-	
+
 	/** 保存PO的list */
 	protected DefineList<PO> poList;
 	/** 保存文件的路径 */
@@ -40,7 +42,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	/** 文件中记录的日期 */
 	protected String dateRecord;
 
-	public CommonData() {
+	public CommonData() throws RemoteException {
 		init();	// 初始化parsexml
 		filePath = parsexml.getValue("path");
 		maxID = Integer.parseInt(parsexml.getValue("maxID"));
@@ -51,8 +53,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	/**
 	 * @see dataservice.DataService#getID()
 	 */
-	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		if (poList.isEmpty()) {
 			maxID = 0;	// 初始化最大ID
 			parsexml.setValue("maxID", Common.intToString(maxID, IDMaxBit));
@@ -79,7 +80,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @author cylong
 	 * @version 2014年12月2日 下午6:03:39
 	 */
-	public String getID(BillType type) {
+	public String getID(BillType type) throws RemoteException {
 		String preID = getPreID(type);
 		if (preID == null) {
 			return null;
@@ -115,7 +116,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @author cylong
 	 * @version 2014年12月9日 下午6:54:46
 	 */
-	protected String getBillID() {
+	protected String getBillID() throws RemoteException {
 		if (currentDate.equals(dateRecord)) {
 			maxID = Integer.parseInt(parsexml.getValue("maxID"));
 		} else {	// 过了一天
@@ -133,7 +134,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @see dataservice.CommonDataService#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(PO po) {
+	public ResultMessage insert(PO po) throws RemoteException {
 		poList.add(po);
 		addID();
 		return ResultMessage.SUCCESS;
@@ -143,7 +144,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @see dataservice.CommonDataService#find(java.lang.String)
 	 */
 	@Override
-	public PO find(String ID) {
+	public PO find(String ID) throws RemoteException {
 		for(PO po : poList.getInList()) {
 			if (po.getID().equals(ID)) {
 				return po;
@@ -156,7 +157,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @see dataservice.CommonDataService#delete(java.lang.String)
 	 */
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		for(int i = 0; i < poList.size(); i++) {
 			if (poList.get(i).getID().equals(ID)) {
 				poList.remove(i);
@@ -170,7 +171,7 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @see dataservice.CommonDataService#update(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage update(PO po) {
+	public ResultMessage update(PO po) throws RemoteException {
 		for(int i = 0; i < poList.size(); i++) {
 			PO temp = poList.get(i);
 			if (temp.getID().equals(po.getID())) {
@@ -185,8 +186,16 @@ public abstract class CommonData<PO extends PersistentObject> implements CommonD
 	 * @see dataservice.CommonDataService#show()
 	 */
 	@Override
-	public ArrayList<PO> show() {
+	public ArrayList<PO> show() throws RemoteException {
 		return poList.getInList();
+	}
+
+	/**
+	 * @see dataservice.DataService#getServiceName()
+	 */
+	@Override
+	public String getServiceName() throws RemoteException {
+		return parsexml.getValue("name");
 	}
 
 }

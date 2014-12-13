@@ -1,5 +1,6 @@
 package data.promotiondata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import common.ParseXML;
@@ -14,11 +15,23 @@ import dataservice.promotiondataservice.PromotionDataService;
  */
 public class PromotionData extends CommonData<PromotionPO> implements PromotionDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -6496683940540459670L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:20:43
+	 */
+	public PromotionData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("PromotionData");
 		prefix = parsexml.getValue("prefix");
 	}
@@ -27,7 +40,7 @@ public class PromotionData extends CommonData<PromotionPO> implements PromotionD
 	 * @see data.CommonData#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		return prefix + super.getID();
 	}
 
@@ -35,7 +48,7 @@ public class PromotionData extends CommonData<PromotionPO> implements PromotionD
 	 * @see dataservice.promotiondataservice.PromotionDataService#show(dataenum.PromotionType)
 	 */
 	@Override
-	public ArrayList<PromotionPO> show(PromotionType type) {
+	public ArrayList<PromotionPO> show(PromotionType type) throws RemoteException {
 		ArrayList<PromotionPO> pos = new ArrayList<PromotionPO>();
 		for(PromotionPO po : poList.getInList()) {
 			if (po.getType().equals(type)) {

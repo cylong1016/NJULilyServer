@@ -1,5 +1,7 @@
 package dataservice.purchasedataservice;
 
+import java.rmi.RemoteException;
+
 import po.PurchasePO;
 import dataenum.BillType;
 import dataservice.CommonDataService;
@@ -20,27 +22,27 @@ public interface PurchaseDataService extends CommonDataService<PurchasePO> {
 	 * @author cylong
 	 * @version 2014年11月28日 下午12:11:03
 	 */
-	public String getID(BillType type);
+	public String getID(BillType type) throws RemoteException;
 
 	/**
 	 * @return 新的进货单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午6:44:29
 	 */
-	public String getPurchaseID();
+	public String getPurchaseID() throws RemoteException;
 
 	/**
 	 * @return 新的进货退货单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午6:44:31
 	 */
-	public String getPurchaseBackID();
+	public String getPurchaseBackID() throws RemoteException;
 
 	/**
 	 * @return PurchaseInfoService 的实例
 	 * @author cylong
 	 * @version 2014年12月2日 上午2:43:12
 	 */
-	public TableInfoService<PurchasePO> getInfo();
+	public TableInfoService<PurchasePO> getInfo() throws RemoteException;
 
 }

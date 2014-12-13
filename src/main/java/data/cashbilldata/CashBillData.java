@@ -1,5 +1,6 @@
 package data.cashbilldata;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,16 +17,28 @@ import dataservice.cashbilldataservice.CashBillDataService;
  */
 public class CashBillData extends CommonData<CashBillPO> implements CashBillDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 6466349581911827298L;
+
 	/** 当天日期 */
 	private String currentDate;
 	/** 文件中记录的日期 */
 	private String dateRecord;
 
 	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:59:20
+	 */
+	public CashBillData() throws RemoteException {
+		super();
+	}
+
+	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("CashBillData");
 		prefix = parsexml.getValue("prefix");
 		dateRecord = parsexml.getValue("dateRecord");
@@ -39,7 +52,7 @@ public class CashBillData extends CommonData<CashBillPO> implements CashBillData
 	 * @see data.CommonData#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		if (currentDate.equals(dateRecord)) {
 			maxID = Integer.parseInt(parsexml.getValue("maxID"));
 		} else {	// 过了一天
@@ -57,7 +70,7 @@ public class CashBillData extends CommonData<CashBillPO> implements CashBillData
 	 * @see dataservice.cashbilldataservice.CashBillDataService#getInfo()
 	 */
 	@Override
-	public TableInfoService<CashBillPO> getInfo() {
+	public TableInfoService<CashBillPO> getInfo() throws RemoteException {
 		return new CashBillInfo();
 	}
 

@@ -1,5 +1,7 @@
 package dataservice.commoditysortdataservice;
 
+import java.rmi.RemoteException;
+
 import dataservice.CommonDataService;
 import po.CommoditySortPO;
 
@@ -16,5 +18,5 @@ public interface CommoditySortDataService extends CommonDataService<CommoditySor
 	 * @author cylong
 	 * @version 2014年12月1日 下午9:20:35
 	 */
-	public String getID(String fatherID);
+	public String getID(String fatherID) throws RemoteException;
 }

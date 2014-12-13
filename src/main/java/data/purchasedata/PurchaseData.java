@@ -1,5 +1,6 @@
 package data.purchasedata;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,16 +18,28 @@ import dataservice.purchasedataservice.PurchaseDataService;
  */
 public class PurchaseData extends CommonData<PurchasePO> implements PurchaseDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -3452395207596070860L;
+
 	/** JHD */
 	private String purchaseID;
 	/** JHTHD */
 	private String purchasebackID;
 
 	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:55:52
+	 */
+	public PurchaseData() throws RemoteException {
+		super();
+	}
+
+	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("PurchaseData");
 		purchaseID = parsexml.getValue("purchaseID");
 		purchasebackID = parsexml.getValue("purchasebackID");
@@ -59,7 +72,7 @@ public class PurchaseData extends CommonData<PurchasePO> implements PurchaseData
 	 * @see dataservice.purchasedataservice.PurchaseDataService#getInfo()
 	 */
 	@Override
-	public TableInfoService<PurchasePO> getInfo() {
+	public TableInfoService<PurchasePO> getInfo() throws RemoteException {
 		return new PurchaseInfo();
 	}
 
@@ -67,7 +80,7 @@ public class PurchaseData extends CommonData<PurchasePO> implements PurchaseData
 	 * @see dataservice.purchasedataservice.PurchaseDataService#getPurchaseID()
 	 */
 	@Override
-	public String getPurchaseID() {
+	public String getPurchaseID() throws RemoteException {
 		String ID = getBillID();
 		return purchaseID + "-" + currentDate + "-" + ID;
 	}
@@ -76,7 +89,7 @@ public class PurchaseData extends CommonData<PurchasePO> implements PurchaseData
 	 * @see dataservice.purchasedataservice.PurchaseDataService#getPurchaseBackID()
 	 */
 	@Override
-	public String getPurchaseBackID() {
+	public String getPurchaseBackID() throws RemoteException {
 		String ID = getBillID();
 		return purchasebackID + "-" + currentDate + "-" + ID;
 	}

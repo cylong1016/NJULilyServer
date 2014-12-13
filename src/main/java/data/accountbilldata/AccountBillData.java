@@ -1,5 +1,6 @@
 package data.accountbilldata;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,16 +18,28 @@ import dataservice.accountbilldataservice.AccountBillDataService;
  */
 public class AccountBillData extends CommonData<AccountBillPO> implements AccountBillDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 4334794364186421056L;
+
 	/** SKD */
 	private String expenseID;
 	/** FKD */
 	private String payID;
 
 	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午4:02:08
+	 */
+	public AccountBillData() throws RemoteException {
+		super();
+	}
+
+	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("AccountBillData");
 		expenseID = parsexml.getValue("expenseID");
 		payID = parsexml.getValue("payID");
@@ -59,7 +72,7 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 	 * @see dataservice.accountbilldataservice.AccountBillDataService#show(dataenum.BillType)
 	 */
 	@Override
-	public ArrayList<AccountBillPO> show(BillType type) {
+	public ArrayList<AccountBillPO> show(BillType type) throws RemoteException {
 		ArrayList<AccountBillPO> bills = new ArrayList<AccountBillPO>();
 		for(AccountBillPO po : poList.getInList()) {
 			if (po.getType().equals(type)) {
@@ -73,7 +86,7 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 	 * @see dataservice.accountbilldataservice.AccountBillDataService#getInfo()
 	 */
 	@Override
-	public TableInfoService<AccountBillPO> getInfo() {
+	public TableInfoService<AccountBillPO> getInfo() throws RemoteException {
 		return new AccountBillInfo();
 	}
 

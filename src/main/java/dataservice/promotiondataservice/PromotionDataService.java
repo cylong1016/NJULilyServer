@@ -1,5 +1,6 @@
 package dataservice.promotiondataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.PromotionPO;
@@ -20,5 +21,5 @@ public interface PromotionDataService extends CommonDataService<PromotionPO> {
 	 * @author cylong
 	 * @version 2014年12月4日 下午7:52:43
 	 */
-	public ArrayList<PromotionPO> show(PromotionType type);
+	public ArrayList<PromotionPO> show(PromotionType type) throws RemoteException;
 }

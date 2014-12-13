@@ -1,5 +1,6 @@
 package dataservice.inventorydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.InventoryBillPO;
@@ -22,49 +23,49 @@ public interface InventoryDataService extends CommonDataService<InventoryBillPO>
 	 * @author cylong
 	 * @version 2014年12月2日 下午5:53:27
 	 */
-	public String getID(BillType type);
+	public String getID(BillType type) throws RemoteException;
 
 	/**
 	 * @return 新的报溢单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午7:03:43
 	 */
-	public String getOverflowID();
+	public String getOverflowID() throws RemoteException;
 
 	/**
 	 * @return 新的报损单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午7:03:55
 	 */
-	public String getLossID();
+	public String getLossID() throws RemoteException;
 
 	/**
 	 * @return 新的报警单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午7:04:04
 	 */
-	public String getAlarmID();
+	public String getAlarmID() throws RemoteException;
 
 	/**
 	 * @return 新的赠送单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午7:04:13
 	 */
-	public String getGiftID();
+	public String getGiftID() throws RemoteException;
 
 	/**
 	 * @return 返回一个盘点的批号
 	 * @author cylong
 	 * @version Nov 8, 2014 6:25:36 PM
 	 */
-	public String returnNumber();
+	public String returnNumber() throws RemoteException;
 
 	/**
 	 * @return InventoryInfoService 的实例
 	 * @author cylong
 	 * @version 2014年12月2日 上午2:45:01
 	 */
-	public TableInfoService<InventoryBillPO> getInfo();
+	public TableInfoService<InventoryBillPO> getInfo() throws RemoteException;
 
 	/**
 	 * @param type 单据类型
@@ -72,5 +73,5 @@ public interface InventoryDataService extends CommonDataService<InventoryBillPO>
 	 * @author cylong
 	 * @version 2014年12月2日 下午10:02:54
 	 */
-	public ArrayList<InventoryBillPO> show(BillType type);
+	public ArrayList<InventoryBillPO> show(BillType type) throws RemoteException;
 }

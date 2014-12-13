@@ -1,5 +1,6 @@
 package data.accountdata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import common.ParseXML;
@@ -16,11 +17,23 @@ import dataservice.accountdataservice.AccountDataService;
  */
 public class AccountData extends CommonData<AccountPO> implements AccountDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 5874376926505168977L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午4:01:19
+	 */
+	public AccountData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("AccountData");
 		prefix = parsexml.getValue("prefix");
 	}
@@ -29,7 +42,7 @@ public class AccountData extends CommonData<AccountPO> implements AccountDataSer
 	 * @see data.CommonData#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		return prefix + super.getID();
 	}
 
@@ -38,7 +51,7 @@ public class AccountData extends CommonData<AccountPO> implements AccountDataSer
 	 * @see data.CommonData#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(AccountPO po) {
+	public ResultMessage insert(AccountPO po) throws RemoteException {
 		for(AccountPO temp : poList.getInList()) {
 			if (temp.getName().equals(po.getName())) {
 				return ResultMessage.FAILURE;
@@ -52,7 +65,7 @@ public class AccountData extends CommonData<AccountPO> implements AccountDataSer
 	 * @see dataservice.accountdataservice.AccountDataService#find(java.lang.String, dataenum.FindTypeAccount)
 	 */
 	@Override
-	public ArrayList<AccountPO> find(String keywords, FindTypeAccount type) {
+	public ArrayList<AccountPO> find(String keywords, FindTypeAccount type) throws RemoteException {
 		keywords = keywords.toLowerCase(); // 为了不区分大小写
 		ArrayList<AccountPO> accounts = new ArrayList<AccountPO>();
 		if (type == null) {	// 查找账户全部信息

@@ -1,5 +1,6 @@
 package data.inventorydata;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,9 @@ import dataservice.inventorydataservice.InventoryDataService;
  */
 public class InventoryData extends CommonData<InventoryBillPO> implements InventoryDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 8341935441916365357L;
+
 	/** BYD */
 	private String overflowID;
 	/** BSD */
@@ -28,10 +32,19 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	private String giftID;
 
 	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:57:07
+	 */
+	public InventoryData() throws RemoteException {
+		super();
+	}
+
+	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("InventoryData");
 		overflowID = parsexml.getValue("overflowID");
 		lossID = parsexml.getValue("lossID");
@@ -70,12 +83,12 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#returnNumber()
 	 */
 	@Override
-	public String returnNumber() {
+	public String returnNumber() throws RemoteException {
 		// TODO 返回一个盘点的批号
 		return null;
 	}
 
-	public ArrayList<InventoryBillPO> show(BillType type) {
+	public ArrayList<InventoryBillPO> show(BillType type) throws RemoteException {
 		ArrayList<InventoryBillPO> typePOs = new ArrayList<InventoryBillPO>();
 		for(InventoryBillPO po : poList.getInList()) {
 			if (po.getBillType().equals(type)) {
@@ -89,7 +102,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#getInfo()
 	 */
 	@Override
-	public TableInfoService<InventoryBillPO> getInfo() {
+	public TableInfoService<InventoryBillPO> getInfo() throws RemoteException {
 		return new InventoryInfo();
 	}
 
@@ -97,7 +110,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#getOverflowID()
 	 */
 	@Override
-	public String getOverflowID() {
+	public String getOverflowID() throws RemoteException {
 		String ID = super.getID();
 		return overflowID + "-" + currentDate + "-" + ID;
 	}
@@ -106,7 +119,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#getLossID()
 	 */
 	@Override
-	public String getLossID() {
+	public String getLossID() throws RemoteException {
 		String ID = super.getID();
 		return lossID + "-" + currentDate + "-" + ID;
 	}
@@ -115,7 +128,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#getAlarmID()
 	 */
 	@Override
-	public String getAlarmID() {
+	public String getAlarmID() throws RemoteException {
 		String ID = super.getID();
 		return alarmID + "-" + currentDate + "-" + ID;
 	}
@@ -124,7 +137,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 * @see dataservice.inventorydataservice.InventoryDataService#getGiftID()
 	 */
 	@Override
-	public String getGiftID() {
+	public String getGiftID() throws RemoteException {
 		String ID = super.getID();
 		return giftID + "-" + currentDate + "-" + ID;
 	}

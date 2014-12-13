@@ -1,5 +1,6 @@
 package dataservice.accountbilldataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.AccountBillPO;
@@ -21,7 +22,7 @@ public interface AccountBillDataService extends CommonDataService<AccountBillPO>
 	 * @author cylong
 	 * @version 2014年11月30日 下午10:54:18
 	 */
-	public String getID(BillType type);
+	public String getID(BillType type) throws RemoteException;
 
 	/**
 	 * 按照单据类型返回单据【收款单或者付款单】
@@ -30,12 +31,12 @@ public interface AccountBillDataService extends CommonDataService<AccountBillPO>
 	 * @author cylong
 	 * @version 2014年12月1日 下午3:13:56
 	 */
-	public ArrayList<AccountBillPO> show(BillType type);
+	public ArrayList<AccountBillPO> show(BillType type) throws RemoteException;
 
 	/**
 	 * @return AccountBillInfoService 的实例
 	 * @author cylong
 	 * @version 2014年12月2日 上午2:42:37
 	 */
-	public TableInfoService<AccountBillPO> getInfo();
+	public TableInfoService<AccountBillPO> getInfo() throws RemoteException;
 }

@@ -1,5 +1,6 @@
 package dataservice.accountdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.AccountPO;
@@ -18,6 +19,6 @@ public interface AccountDataService extends CommonDataService<AccountPO> {
 	 * @param keywords
 	 * @return 账户持久化对象
 	 */
-	public ArrayList<AccountPO> find(String keywords, FindTypeAccount type);
+	public ArrayList<AccountPO> find(String keywords, FindTypeAccount type) throws RemoteException;
 
 }

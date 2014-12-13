@@ -1,7 +1,6 @@
 package data;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
 import data.accountbilldata.AccountBillData;
 import data.accountdata.AccountData;
@@ -15,7 +14,6 @@ import data.promotiondata.PromotionData;
 import data.purchasedata.PurchaseData;
 import data.saledata.SaleData;
 import data.userdata.UserData;
-import dataservice.DataFactoryService;
 import dataservice.accountbilldataservice.AccountBillDataService;
 import dataservice.accountdataservice.AccountDataService;
 import dataservice.accountinitdataservice.AccountaInitDataService;
@@ -30,118 +28,118 @@ import dataservice.saledataservice.SaleDataService;
 import dataservice.userdataservice.UserDataService;
 
 /**
- * 抽象工厂，返回数据层模块接口
+ * 工厂，返回数据层模块接口
  * @author cylong
  * @version Nov 2, 2014 5:09:28 PM
  */
-public class DataFactory extends UnicastRemoteObject implements DataFactoryService {
+public class DataFactory {
 
-	/** serialVersionUID */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @throws RemoteException
-	 * @author cylong
-	 * @version Nov 2, 2014 5:11:29 PM
-	 */
-	public DataFactory() throws RemoteException {
-		super();
+	public static AccountaInitDataService getAccountaInitData() {
+		try {
+			return new AccountInitData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getAccountaInitData()
-	 */
-	@Override
-	public AccountaInitDataService getAccountaInitData() throws RemoteException {
-		return new AccountInitData();
+	public static AccountDataService getAccountData() {
+		try {
+			return new AccountData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getAccountData()
-	 */
-	@Override
-	public AccountDataService getAccountData() throws RemoteException {
-		return new AccountData();
+	public static ClientDataService getClientData() {
+		try {
+			return new ClientData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getClientData()
-	 */
-	@Override
-	public ClientDataService getClientData() throws RemoteException {
-		return new ClientData();
+	public static CommodityDataService getCommodityData() {
+		try {
+			return new CommodityData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getCommodityData()
-	 */
-	@Override
-	public CommodityDataService getCommodityData() throws RemoteException {
-		return new CommodityData();
+	public static CommoditySortDataService getCommoditySortData() {
+		try {
+			return new CommoditySortData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getCommoditySortData()
-	 */
-	@Override
-	public CommoditySortDataService getCommoditySortData() throws RemoteException {
-		return new CommoditySortData();
+	public static AccountBillDataService getAccountBillData() {
+		try {
+			return new AccountBillData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getAccountBillData()
-	 */
-	@Override
-	public AccountBillDataService getAccountBillData() throws RemoteException {
-		return new AccountBillData();
+	public static InventoryDataService getInventoryData() {
+		try {
+			return new InventoryData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getInventoryData()
-	 */
-	@Override
-	public InventoryDataService getInventoryData() throws RemoteException {
-		return new InventoryData();
+	public static PromotionDataService getPromotionData() {
+		try {
+			return new PromotionData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getPromotionData()
-	 */
-	@Override
-	public PromotionDataService getPromotionData() throws RemoteException {
-		return new PromotionData();
+	public static PurchaseDataService getPurchaseData() {
+		try {
+			return new PurchaseData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getPurchaseData()
-	 */
-	@Override
-	public PurchaseDataService getPurchaseData() throws RemoteException {
-		return new PurchaseData();
+	public static SaleDataService getSaleData() {
+		try {
+			return new SaleData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getSaleData()
-	 */
-	@Override
-	public SaleDataService getSaleData() throws RemoteException {
-		return new SaleData();
+	public static UserDataService getUserData() {
+		try {
+			return new UserData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	/**
-	 * @see dataservice.DataFactoryService#getUserData()
-	 */
-	@Override
-	public UserDataService getUserData() throws RemoteException {
-		return new UserData();
-	}
-
-	/**
-	 * @see dataservice.DataFactoryService#getCashBillData()
-	 */
-	@Override
-	public CashBillDataService getCashBillData() throws RemoteException {
-		return new CashBillData();
+	public static CashBillDataService getCashBillData() {
+		try {
+			return new CashBillData();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

@@ -1,8 +1,10 @@
 package data.userdata;
 
-import common.ParseXML;
+import java.rmi.RemoteException;
+
 import message.ResultMessage;
 import po.UserPO;
+import common.ParseXML;
 import data.CommonData;
 import dataservice.userdataservice.AdminInfo;
 import dataservice.userdataservice.UserDataService;
@@ -14,11 +16,23 @@ import dataservice.userdataservice.UserDataService;
  */
 public class UserData extends CommonData<UserPO> implements UserDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 4037781020386364454L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:16:15
+	 */
+	public UserData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("UserData");
 		prefix = parsexml.getValue("prefix");
 	}
@@ -27,7 +41,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 * @see data.CommonData#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		return prefix + super.getID();
 	}
 
@@ -36,7 +50,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 * @see data.CommonData#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(UserPO po) {
+	public ResultMessage insert(UserPO po) throws RemoteException {
 		for(UserPO temp : poList.getInList()) {
 			if (temp.getUsername().equals(po.getUsername())) {
 				return ResultMessage.FAILURE;
@@ -50,7 +64,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 * @see dataservice.userdataservice.UserDataService#checkAdmin(dataservice.userdataservice.AdminInfo)
 	 */
 	@Override
-	public boolean checkAdmin(AdminInfo admin) {
+	public boolean checkAdmin(AdminInfo admin) throws RemoteException {
 		AdminInfo adminInfo = loadAdminInfo();	// 从文件中读取的AdminInfo
 		if (adminInfo.equals(admin)) {
 			return true;
@@ -75,7 +89,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 * @see dataservice.userdataservice.UserDataService#updateAdmin(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public ResultMessage updateAdmin(String oldPass, String newPass) {
+	public ResultMessage updateAdmin(String oldPass, String newPass) throws RemoteException {
 		ParseXML parse = new ParseXML("config/Admin.xml", "Admin");
 		String password = parse.getValue("password");	// 从文件中读取的password
 		if (oldPass.equals(password)) {

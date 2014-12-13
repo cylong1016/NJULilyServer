@@ -3,6 +3,7 @@ package data.commoditysortdata;
 import io.DefineList;
 
 import java.io.File;
+import java.rmi.RemoteException;
 
 import common.ParseXML;
 import message.ResultMessage;
@@ -17,11 +18,23 @@ import dataservice.commoditysortdataservice.CommoditySortDataService;
  */
 public class CommoditySortData extends CommonData<CommoditySortPO> implements CommoditySortDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -543943422778007719L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:21:46
+	 */
+	public CommoditySortData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("CommoditySortData");
 		filePath = parsexml.getValue("path");
 		File file = new File(filePath);
@@ -36,7 +49,7 @@ public class CommoditySortData extends CommonData<CommoditySortPO> implements Co
 	 * @see dataservice.commoditysortdataservice.CommoditySortDataService#getID(java.lang.String)
 	 */
 	@Override
-	public String getID(String fatherID) {
+	public String getID(String fatherID) throws RemoteException {
 		if (fatherID == null) {
 			return getID();
 		}
@@ -49,7 +62,7 @@ public class CommoditySortData extends CommonData<CommoditySortPO> implements Co
 	 * @see data.CommonData#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(CommoditySortPO po) {
+	public ResultMessage insert(CommoditySortPO po) throws RemoteException {
 		for(CommoditySortPO temp : poList.getInList()) {
 			if (temp.getName().equals(po.getName())) { // 名称存在就添加失败
 				return ResultMessage.FAILURE;
@@ -64,7 +77,7 @@ public class CommoditySortData extends CommonData<CommoditySortPO> implements Co
 	 * @see data.CommonData#delete(java.lang.String)
 	 */
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		CommoditySortPO po = find(ID);
 		if (po.getChildrenID() == null && po.getCommoditiesID() == null) {
 			return super.delete(ID);

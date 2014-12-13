@@ -1,5 +1,7 @@
 package dataservice.saledataservice;
 
+import java.rmi.RemoteException;
+
 import po.SalesPO;
 import dataenum.BillType;
 import dataservice.CommonDataService;
@@ -20,7 +22,7 @@ public interface SaleDataService extends CommonDataService<SalesPO> {
 	 * @author cylong
 	 * @version 2014年11月28日 下午12:11:03
 	 */
-	public String getID(BillType type);
+	public String getID(BillType type) throws RemoteException;
 
 	/**
 	 * 生成新的销售单的ID
@@ -28,19 +30,19 @@ public interface SaleDataService extends CommonDataService<SalesPO> {
 	 * @author cylong
 	 * @version 2014年12月9日 下午6:42:24
 	 */
-	public String getSaleID();
+	public String getSaleID() throws RemoteException;
 
 	/**
 	 * @return 新的销售退货单的ID
 	 * @author cylong
 	 * @version 2014年12月9日 下午6:42:53
 	 */
-	public String getSaleBackID();
+	public String getSaleBackID() throws RemoteException;
 
 	/**
 	 * @return SaleInfoService 的实例
 	 * @author cylong
 	 * @version 2014年12月2日 上午2:43:12
 	 */
-	public TableInfoService<SalesPO> getInfo();
+	public TableInfoService<SalesPO> getInfo() throws RemoteException;
 }

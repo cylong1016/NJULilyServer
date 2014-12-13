@@ -1,5 +1,7 @@
 package data.purchasedata;
 
+import java.rmi.RemoteException;
+
 import po.PurchasePO;
 import data.TableInfo;
 import dataenum.Storage;
@@ -11,13 +13,25 @@ import dataenum.Storage;
  */
 public class PurchaseInfo extends TableInfo<PurchasePO> {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 7513313073337006506L;
+
 	private PurchaseData purchaseData;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:55:24
+	 */
+	public PurchaseInfo() throws RemoteException {
+		super();
+	}
 
 	/**
 	 * @see data.TableInfo#initPOs()
 	 */
 	@Override
-	protected void initPOs() {
+	protected void initPOs() throws RemoteException {
 		purchaseData = new PurchaseData();
 		pos = purchaseData.show();
 	}
@@ -26,7 +40,7 @@ public class PurchaseInfo extends TableInfo<PurchasePO> {
 	 * @see data.TableInfo#getClient(java.lang.String)
 	 */
 	@Override
-	public String getClient(String billID) {
+	public String getClient(String billID) throws RemoteException {
 		return purchaseData.find(billID).getClient();
 	}
 
@@ -34,7 +48,7 @@ public class PurchaseInfo extends TableInfo<PurchasePO> {
 	 * @see data.TableInfo#getStorage(java.lang.String)
 	 */
 	@Override
-	public Storage getStorage(String billID) {
+	public Storage getStorage(String billID) throws RemoteException {
 		return purchaseData.find(billID).getStorage();
 	}
 

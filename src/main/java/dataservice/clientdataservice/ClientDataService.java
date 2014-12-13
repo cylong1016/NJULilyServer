@@ -1,5 +1,6 @@
 package dataservice.clientdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.ClientPO;
@@ -18,5 +19,5 @@ public interface ClientDataService extends CommonDataService<ClientPO> {
 	 * @param keywords
 	 * @return 客户持久化数据
 	 */
-	public ArrayList<ClientPO> find(String keywords, FindTypeClient type);
+	public ArrayList<ClientPO> find(String keywords, FindTypeClient type) throws RemoteException;
 }

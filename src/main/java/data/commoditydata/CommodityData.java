@@ -1,15 +1,19 @@
 package data.commoditydata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import common.ParseXML;
 import message.ResultMessage;
 import po.CommodityPO;
 import po.CommoditySortPO;
+
+import common.ParseXML;
+
 import data.CommonData;
-import data.commoditysortdata.CommoditySortData;
+import data.DataFactory;
 import dataenum.FindTypeCommo;
 import dataservice.commoditydataservice.CommodityDataService;
+import dataservice.commoditysortdataservice.CommoditySortDataService;
 
 /**
  * @see dataservice.commoditydataservice.CommodityDataService
@@ -18,11 +22,23 @@ import dataservice.commoditydataservice.CommodityDataService;
  */
 public class CommodityData extends CommonData<CommodityPO> implements CommodityDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -6277717831564809873L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:21:57
+	 */
+	public CommodityData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("CommodityData");
 		prefix = parsexml.getValue("prefix");
 	}
@@ -31,11 +47,11 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	 * @see dataservice.commoditydataservice.CommodityDataService#getID(java.lang.String)
 	 */
 	@Override
-	public String getID(String fatherID) {
+	public String getID(String fatherID) throws RemoteException {
 		if (fatherID == null) {
 			return null;
 		}
-		CommoditySortData sortData = new CommoditySortData();
+		CommoditySortDataService sortData = DataFactory.getCommoditySortData();
 		CommoditySortPO sortPO = sortData.find(fatherID);
 		String newID = sortPO.getID() + "-" + prefix + super.getID();
 		return newID;
@@ -46,7 +62,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	 * @see data.CommonData#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(CommodityPO po) {
+	public ResultMessage insert(CommodityPO po) throws RemoteException {
 		for(CommodityPO temp : poList.getInList()) {
 			boolean hasName = temp.getName().equals(po.getName());
 			boolean hasType = temp.getType().equals(po.getType());
@@ -63,7 +79,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	 *      dataenum.FindTypeCommo)
 	 */
 	@Override
-	public ArrayList<CommodityPO> find(String keywords, FindTypeCommo type) {
+	public ArrayList<CommodityPO> find(String keywords, FindTypeCommo type) throws RemoteException {
 		ArrayList<CommodityPO> commodities = new ArrayList<CommodityPO>();
 		keywords = keywords.toLowerCase(); // 为了不区分大小写
 		if (type == null) {	// 查询商品全部信息
@@ -141,7 +157,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	 * @see dataservice.commoditydataservice.CommodityDataService#getAllID()
 	 */
 	@Override
-	public ArrayList<String> getAllID() {
+	public ArrayList<String> getAllID() throws RemoteException {
 		ArrayList<String> IDs = new ArrayList<String>();
 		for(CommodityPO commodity : poList.getInList()) {
 			IDs.add(commodity.getID());
@@ -156,7 +172,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	 * @version 2014年12月1日 下午9:26:31
 	 */
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		CommodityPO po = find(ID);
 		if ((po.getRecentPurPrice() + po.getRecentSalePrice()) != 0) {
 			return ResultMessage.FAILURE;

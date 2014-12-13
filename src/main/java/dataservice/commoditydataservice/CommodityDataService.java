@@ -1,5 +1,6 @@
 package dataservice.commoditydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.CommodityPO;
@@ -18,7 +19,7 @@ public interface CommodityDataService extends CommonDataService<CommodityPO> {
 	 * @param keywords
 	 * @return 商品持久化数据
 	 */
-	public ArrayList<CommodityPO> find(String keywords, FindTypeCommo type);
+	public ArrayList<CommodityPO> find(String keywords, FindTypeCommo type) throws RemoteException;
 
 	/**
 	 * @param fatherID 商品父类的ID
@@ -26,12 +27,12 @@ public interface CommodityDataService extends CommonDataService<CommodityPO> {
 	 * @author cylong
 	 * @version 2014年12月1日 下午9:20:35
 	 */
-	public String getID(String fatherID);
+	public String getID(String fatherID) throws RemoteException;
 
 	/**
 	 * @return 全部商品的ID
 	 * @author cylong
 	 * @version 2014年11月28日 下午12:28:46
 	 */
-	public ArrayList<String> getAllID();
+	public ArrayList<String> getAllID() throws RemoteException;
 }

@@ -1,5 +1,7 @@
 package data.saledata;
 
+import java.rmi.RemoteException;
+
 import po.SalesPO;
 import data.TableInfo;
 import dataenum.Storage;
@@ -11,13 +13,25 @@ import dataenum.Storage;
  */
 public class SaleInfo extends TableInfo<SalesPO> {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = 6622297309490703986L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:16:42
+	 */
+	public SaleInfo() throws RemoteException {
+		super();
+	}
+
 	private SaleData saleData;
 
 	/**
 	 * @see data.TableInfo#initPOs()
 	 */
 	@Override
-	protected void initPOs() {
+	protected void initPOs() throws RemoteException {
 		saleData = new SaleData();
 		pos = saleData.show();
 	}
@@ -27,7 +41,7 @@ public class SaleInfo extends TableInfo<SalesPO> {
 	 * @see dataservice.TableInfoService#getClient(java.lang.String)
 	 */
 	@Override
-	public String getClient(String billID) {
+	public String getClient(String billID) throws RemoteException {
 		return saleData.find(billID).getClient();
 	}
 
@@ -36,7 +50,7 @@ public class SaleInfo extends TableInfo<SalesPO> {
 	 * @see dataservice.TableInfoService#getSalesman(java.lang.String)
 	 */
 	@Override
-	public String getSalesman(String billID) {
+	public String getSalesman(String billID) throws RemoteException {
 		return saleData.find(billID).getSalesman();
 	}
 
@@ -45,7 +59,7 @@ public class SaleInfo extends TableInfo<SalesPO> {
 	 * @see dataservice.TableInfoService#getStorage(java.lang.String)
 	 */
 	@Override
-	public Storage getStorage(String billID) {
+	public Storage getStorage(String billID) throws RemoteException {
 		return saleData.find(billID).getStorage();
 	}
 

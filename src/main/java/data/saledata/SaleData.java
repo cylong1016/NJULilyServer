@@ -1,5 +1,6 @@
 package data.saledata;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,16 +18,28 @@ import dataservice.saledataservice.SaleDataService;
  */
 public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -6497902041791004805L;
+
 	/** XSD */
 	private String saleID;
 	/** XSTHD */
 	private String salebackID;
 
 	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午2:16:59
+	 */
+	public SaleData() throws RemoteException {
+		super();
+	}
+
+	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("SaleData");
 		saleID = parsexml.getValue("saleID");
 		salebackID = parsexml.getValue("salebackID");
@@ -59,7 +72,7 @@ public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 	 * @see dataservice.saledataservice.SaleDataService#getInfo()
 	 */
 	@Override
-	public TableInfoService<SalesPO> getInfo() {
+	public TableInfoService<SalesPO> getInfo() throws RemoteException {
 		return new SaleInfo();
 	}
 
@@ -67,7 +80,7 @@ public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 	 * @see dataservice.saledataservice.SaleDataService#getSaleID()
 	 */
 	@Override
-	public String getSaleID() {
+	public String getSaleID() throws RemoteException {
 		String ID = getBillID();
 		return saleID + "-" + currentDate + "-" + ID;
 	}
@@ -76,7 +89,7 @@ public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 	 * @see dataservice.saledataservice.SaleDataService#getSaleBackID()
 	 */
 	@Override
-	public String getSaleBackID() {
+	public String getSaleBackID() throws RemoteException {
 		String ID = getBillID();
 		return salebackID + "-" + currentDate + "-" + ID;
 	}

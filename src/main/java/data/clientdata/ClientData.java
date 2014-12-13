@@ -1,5 +1,6 @@
 package data.clientdata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import common.ParseXML;
@@ -16,11 +17,23 @@ import dataservice.clientdataservice.ClientDataService;
  */
 public class ClientData extends CommonData<ClientPO> implements ClientDataService {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -3277392463773869798L;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:58:29
+	 */
+	public ClientData() throws RemoteException {
+		super();
+	}
+
 	/**
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("ClientData");
 		prefix = parsexml.getValue("prefix");
 	}
@@ -29,7 +42,7 @@ public class ClientData extends CommonData<ClientPO> implements ClientDataServic
 	 * @see data.CommonData#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		return prefix + super.getID();
 	}
 
@@ -38,7 +51,7 @@ public class ClientData extends CommonData<ClientPO> implements ClientDataServic
 	 * @see data.CommonData#insert(po.PersistentObject)
 	 */
 	@Override
-	public ResultMessage insert(ClientPO po) {
+	public ResultMessage insert(ClientPO po) throws RemoteException {
 		for(ClientPO temp : poList.getInList()) {
 			if (temp.getName().equals(po.getName())) {
 				return ResultMessage.FAILURE;
@@ -52,7 +65,7 @@ public class ClientData extends CommonData<ClientPO> implements ClientDataServic
 	 * @see dataservice.clientdataservice.ClientDataService#find(java.lang.String, dataenum.FindTypeClient)
 	 */
 	@Override
-	public ArrayList<ClientPO> find(String keywords, FindTypeClient type) {
+	public ArrayList<ClientPO> find(String keywords, FindTypeClient type) throws RemoteException {
 		keywords = keywords.toLowerCase(); // 为了不区分大小写
 		ArrayList<ClientPO> clients = new ArrayList<ClientPO>();
 		if (type == null) {	// 查找客户全部信息

@@ -1,5 +1,7 @@
 package data.inventorydata;
 
+import java.rmi.RemoteException;
+
 import data.TableInfo;
 import po.InventoryBillPO;
 
@@ -10,13 +12,25 @@ import po.InventoryBillPO;
  */
 public class InventoryInfo extends TableInfo<InventoryBillPO> {
 
+	/** serialVersionUID */
+	private static final long serialVersionUID = -2070822259603429542L;
+
 	private InventoryData inventoryData;
+
+	/**
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午3:56:42
+	 */
+	public InventoryInfo() throws RemoteException {
+		super();
+	}
 
 	/**
 	 * @see data.TableInfo#initPOs()
 	 */
 	@Override
-	protected void initPOs() {
+	protected void initPOs() throws RemoteException {
 		inventoryData = new InventoryData();
 		pos = inventoryData.show();
 	}

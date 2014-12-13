@@ -2,6 +2,8 @@ package data.accountinitdata;
 
 import io.DefineList;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import common.Common;
@@ -14,7 +16,10 @@ import dataservice.accountinitdataservice.AccountaInitDataService;
  * @author cylong
  * @version 2014年12月2日 下午8:37:30
  */
-public class AccountInitData implements AccountaInitDataService {
+public class AccountInitData extends UnicastRemoteObject implements AccountaInitDataService {
+
+	/** serialVersionUID */
+	private static final long serialVersionUID = -5807537592466570234L;
 
 	protected DefineList<AccountaInitPO> initList;
 	/** 保存文件的路径 */
@@ -30,7 +35,7 @@ public class AccountInitData implements AccountaInitDataService {
 	/** 解析xml文件 */
 	protected ParseXML parsexml;
 
-	public AccountInitData() {
+	public AccountInitData() throws RemoteException {
 		init();
 	}
 
@@ -38,7 +43,7 @@ public class AccountInitData implements AccountaInitDataService {
 	 * @see dataservice.DataService#init()
 	 */
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		parsexml = new ParseXML("AccountInitData");
 		filePath = parsexml.getValue("path");
 		prefix = parsexml.getValue("prefix");
@@ -51,7 +56,7 @@ public class AccountInitData implements AccountaInitDataService {
 	 * @see dataservice.DataService#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		if (initList.isEmpty()) {
 			maxID = 0;	// 初始化最大ID
 			parsexml.setValue("maxID", Common.intToString(maxID, IDMaxBit));
@@ -69,7 +74,7 @@ public class AccountInitData implements AccountaInitDataService {
 	 * @see dataservice.DataService#find(java.lang.String)
 	 */
 	@Override
-	public AccountaInitPO find(String ID) {
+	public AccountaInitPO find(String ID) throws RemoteException {
 		for(int i = 0; i < initList.size(); i++) {
 			if (initList.get(i).getID().equals(ID)) {
 				return initList.get(i);
@@ -82,7 +87,7 @@ public class AccountInitData implements AccountaInitDataService {
 	 * @see dataservice.accountinitdataservice.AccountaInitDataService#insert(po.AccountaInitPO)
 	 */
 	@Override
-	public ResultMessage insert(AccountaInitPO po) {
+	public ResultMessage insert(AccountaInitPO po) throws RemoteException {
 		for(AccountaInitPO temp : initList.getInList()) {
 			if (temp.getID().equals(po.getID())) {
 				return ResultMessage.FAILURE;
@@ -97,8 +102,16 @@ public class AccountInitData implements AccountaInitDataService {
 	 * @see dataservice.accountinitdataservice.AccountaInitDataService#show()
 	 */
 	@Override
-	public ArrayList<AccountaInitPO> show() {
+	public ArrayList<AccountaInitPO> show() throws RemoteException {
 		return initList.getInList();
+	}
+
+	/**
+	 * @see dataservice.DataService#getServiceName()
+	 */
+	@Override
+	public String getServiceName() throws RemoteException {
+		return parsexml.getValue("name");
 	}
 
 }
