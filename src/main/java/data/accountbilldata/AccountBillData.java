@@ -58,6 +58,7 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 	 * @version 2014年12月2日 上午5:36:32
 	 */
 	@Override
+	// TODO getID未分开
 	protected String getPreID(BillType type) {
 		switch(type) {
 		case EXPENSE:
