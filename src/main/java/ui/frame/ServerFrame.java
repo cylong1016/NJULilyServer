@@ -10,9 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import ui.frame.title.TitlePanel;
-
+import ui.start.StartPanel;
 import common.Common;
-
 import config.SystemConfig;
 import config.UIConfig;
 
@@ -32,6 +31,8 @@ public class ServerFrame extends JFrame {
 	private float hyalineValue = 0f;
 
 	public ServerFrame() {
+		StartPanel start = new StartPanel();
+		this.add(start);
 		// 标题栏
 		title = new TitlePanel(this);
 		this.add(title);
@@ -43,7 +44,7 @@ public class ServerFrame extends JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setDragable(); // 设置可以拖动
-		this.setOSStyle(); // 设置为windows风格
+		this.setOSStyle(); // 设置为当前系统风格
 		new HyalineValue().start(); // 透明度渐变启动界面
 	}
 

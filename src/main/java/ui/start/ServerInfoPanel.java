@@ -49,7 +49,7 @@ public class ServerInfoPanel extends JPanel {
 		super.paint(g2d);
 		g2d.setFont(UIConfig.TEXT_FONT);
 		g2d.setColor(UIConfig.TEXT_FORE_COLOR);
-		g2d.drawString("主机IP：" + hostAddr, x, y);
+		g2d.drawString("主机地址：" + hostAddr, x, y);
 		g2d.drawString("主机名称：" + hostName, x, y + interval);
 		if (isStarted) {
 			g2d.drawString("主机状态：开启", x, y + interval * 2);
