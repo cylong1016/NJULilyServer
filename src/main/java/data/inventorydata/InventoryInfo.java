@@ -2,15 +2,16 @@ package data.inventorydata;
 
 import java.rmi.RemoteException;
 
-import data.TableInfo;
 import po.InventoryBillPO;
+import data.TableInfo;
+import dataservice.inventorydataservice.InventoryInfoService;
 
 /**
  * @see dataservice.inventorydataservice.InventoryInfoService
  * @author cylong
  * @version 2014年12月2日 上午3:26:45
  */
-public class InventoryInfo extends TableInfo<InventoryBillPO> {
+public class InventoryInfo extends TableInfo<InventoryBillPO> implements InventoryInfoService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2070822259603429542L;

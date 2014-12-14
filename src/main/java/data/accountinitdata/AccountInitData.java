@@ -1,22 +1,21 @@
 package data.accountinitdata;
 
-import io.DefineList;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import common.Common;
+import common.DefineList;
 import common.ParseXML;
 import message.ResultMessage;
 import po.AccountaInitPO;
-import dataservice.accountinitdataservice.AccountaInitDataService;
+import dataservice.accountinitdataservice.AccountInitDataService;
 
 /**
  * @author cylong
  * @version 2014年12月2日 下午8:37:30
  */
-public class AccountInitData extends UnicastRemoteObject implements AccountaInitDataService {
+public class AccountInitData extends UnicastRemoteObject implements AccountInitDataService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -5807537592466570234L;
@@ -44,7 +43,7 @@ public class AccountInitData extends UnicastRemoteObject implements AccountaInit
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("AccountInitData");
+		parsexml = new ParseXML(NAME);
 		filePath = parsexml.getValue("path");
 		prefix = parsexml.getValue("prefix");
 		maxID = Integer.parseInt(parsexml.getValue("maxID"));
@@ -84,7 +83,7 @@ public class AccountInitData extends UnicastRemoteObject implements AccountaInit
 	}
 
 	/**
-	 * @see dataservice.accountinitdataservice.AccountaInitDataService#insert(po.AccountaInitPO)
+	 * @see dataservice.accountinitdataservice.AccountInitDataService#insert(po.AccountaInitPO)
 	 */
 	@Override
 	public ResultMessage insert(AccountaInitPO po) throws RemoteException {
@@ -99,19 +98,11 @@ public class AccountInitData extends UnicastRemoteObject implements AccountaInit
 	}
 
 	/**
-	 * @see dataservice.accountinitdataservice.AccountaInitDataService#show()
+	 * @see dataservice.accountinitdataservice.AccountInitDataService#show()
 	 */
 	@Override
 	public ArrayList<AccountaInitPO> show() throws RemoteException {
 		return initList.getInList();
-	}
-
-	/**
-	 * @see dataservice.DataService#getServiceName()
-	 */
-	@Override
-	public String getServiceName() throws RemoteException {
-		return parsexml.getValue("name");
 	}
 
 }

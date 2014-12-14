@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import po.SalesPO;
 import dataenum.BillType;
 import dataservice.CommonDataService;
-import dataservice.TableInfoService;
 
 /**
  * 提供销售（销售退货）数据集体载入、保存、增加、删除、查找
@@ -13,6 +12,9 @@ import dataservice.TableInfoService;
  * @version Oct 26, 2014 3:52:59 PM
  */
 public interface SaleDataService extends CommonDataService<SalesPO> {
+
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "SaleData";
 
 	/**
 	 * 按照是销售单还是销售退货单返回ID
@@ -39,10 +41,4 @@ public interface SaleDataService extends CommonDataService<SalesPO> {
 	 */
 	public String getSaleBackID() throws RemoteException;
 
-	/**
-	 * @return SaleInfoService 的实例
-	 * @author cylong
-	 * @version 2014年12月2日 上午2:43:12
-	 */
-	public TableInfoService<SalesPO> getInfo() throws RemoteException;
 }

@@ -5,11 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import common.ParseXML;
 import po.InventoryBillPO;
+
+import common.ParseXML;
+
 import data.CommonData;
 import dataenum.BillType;
-import dataservice.TableInfoService;
 import dataservice.inventorydataservice.InventoryDataService;
 
 /**
@@ -45,7 +46,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("InventoryData");
+		parsexml = new ParseXML(NAME);
 		overflowID = parsexml.getValue("overflowID");
 		lossID = parsexml.getValue("lossID");
 		alarmID = parsexml.getValue("alarmID");
@@ -96,14 +97,6 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 			}
 		}
 		return typePOs;
-	}
-
-	/**
-	 * @see dataservice.inventorydataservice.InventoryDataService#getInfo()
-	 */
-	@Override
-	public TableInfoService<InventoryBillPO> getInfo() throws RemoteException {
-		return new InventoryInfo();
 	}
 
 	/**

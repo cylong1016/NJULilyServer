@@ -1,10 +1,9 @@
 package data.commoditysortdata;
 
-import io.DefineList;
-
 import java.io.File;
 import java.rmi.RemoteException;
 
+import common.DefineList;
 import common.ParseXML;
 import message.ResultMessage;
 import po.CommoditySortPO;
@@ -35,7 +34,7 @@ public class CommoditySortData extends CommonData<CommoditySortPO> implements Co
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("CommoditySortData");
+		parsexml = new ParseXML(NAME);
 		filePath = parsexml.getValue("path");
 		File file = new File(filePath);
 		if (!file.exists() || file.length() == 0) {	// 如果不存在保存商品分类的文件，初始化所有商品的父类分类

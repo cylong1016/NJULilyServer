@@ -2,15 +2,16 @@ package data.accountbilldata;
 
 import java.rmi.RemoteException;
 
-import data.TableInfo;
 import po.AccountBillPO;
+import data.TableInfo;
+import dataservice.accountbilldataservice.AccountBillInfoService;
 
 /**
  * @see dataservice.accountbilldataservice.AccountBillInfoService
  * @author cylong
  * @version 2014年12月2日 上午3:24:03
  */
-public class AccountBillInfo extends TableInfo<AccountBillPO> {
+public class AccountBillInfo extends TableInfo<AccountBillPO> implements AccountBillInfoService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 6489453111015622011L;

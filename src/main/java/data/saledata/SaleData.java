@@ -4,11 +4,12 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import common.ParseXML;
 import po.SalesPO;
+
+import common.ParseXML;
+
 import data.CommonData;
 import dataenum.BillType;
-import dataservice.TableInfoService;
 import dataservice.saledataservice.SaleDataService;
 
 /**
@@ -40,7 +41,7 @@ public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("SaleData");
+		parsexml = new ParseXML(NAME);
 		saleID = parsexml.getValue("saleID");
 		salebackID = parsexml.getValue("salebackID");
 		dateRecord = parsexml.getValue("dateRecord");
@@ -66,14 +67,6 @@ public class SaleData extends CommonData<SalesPO> implements SaleDataService {
 		default:
 			return null;
 		}
-	}
-
-	/**
-	 * @see dataservice.saledataservice.SaleDataService#getInfo()
-	 */
-	@Override
-	public TableInfoService<SalesPO> getInfo() throws RemoteException {
-		return new SaleInfo();
 	}
 
 	/**

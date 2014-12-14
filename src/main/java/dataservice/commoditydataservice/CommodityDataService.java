@@ -14,6 +14,9 @@ import dataservice.CommonDataService;
  */
 public interface CommodityDataService extends CommonDataService<CommodityPO> {
 
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "CommodityData";
+
 	/**
 	 * 根据keywords查看商品，type是以什么方式查找，null是模糊查找
 	 * @param keywords

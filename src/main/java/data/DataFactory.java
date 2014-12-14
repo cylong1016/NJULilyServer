@@ -14,18 +14,7 @@ import data.promotiondata.PromotionData;
 import data.purchasedata.PurchaseData;
 import data.saledata.SaleData;
 import data.userdata.UserData;
-import dataservice.accountbilldataservice.AccountBillDataService;
-import dataservice.accountdataservice.AccountDataService;
-import dataservice.accountinitdataservice.AccountaInitDataService;
-import dataservice.cashbilldataservice.CashBillDataService;
-import dataservice.clientdataservice.ClientDataService;
-import dataservice.commoditydataservice.CommodityDataService;
-import dataservice.commoditysortdataservice.CommoditySortDataService;
-import dataservice.inventorydataservice.InventoryDataService;
-import dataservice.promotiondataservice.PromotionDataService;
-import dataservice.purchasedataservice.PurchaseDataService;
-import dataservice.saledataservice.SaleDataService;
-import dataservice.userdataservice.UserDataService;
+import dataservice.DataService;
 
 /**
  * 工厂，返回数据层模块接口
@@ -34,110 +23,41 @@ import dataservice.userdataservice.UserDataService;
  */
 public class DataFactory {
 
-	public static AccountaInitDataService getAccountaInitData() {
-		try {
+	/**
+	 * 注意：在jdk1.7之后的版本才支持case String
+	 * @param name data的名字
+	 * @return DataService的子类实现
+	 * @throws RemoteException
+	 * @author cylong
+	 * @version 2014年12月14日 上午6:48:30
+	 */
+	public static DataService<?> createDataService(String name) throws RemoteException {
+		switch(name) {
+		case AccountInitData.NAME:
 			return new AccountInitData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static AccountDataService getAccountData() {
-		try {
+		case AccountData.NAME:
 			return new AccountData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static ClientDataService getClientData() {
-		try {
+		case ClientData.NAME:
 			return new ClientData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static CommodityDataService getCommodityData() {
-		try {
+		case CommodityData.NAME:
 			return new CommodityData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static CommoditySortDataService getCommoditySortData() {
-		try {
+		case CommoditySortData.NAME:
 			return new CommoditySortData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static AccountBillDataService getAccountBillData() {
-		try {
+		case AccountBillData.NAME:
 			return new AccountBillData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static InventoryDataService getInventoryData() {
-		try {
+		case InventoryData.NAME:
 			return new InventoryData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static PromotionDataService getPromotionData() {
-		try {
+		case PromotionData.NAME:
 			return new PromotionData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static PurchaseDataService getPurchaseData() {
-		try {
+		case PurchaseData.NAME:
 			return new PurchaseData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static SaleDataService getSaleData() {
-		try {
+		case SaleData.NAME:
 			return new SaleData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static UserDataService getUserData() {
-		try {
+		case UserData.NAME:
 			return new UserData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static CashBillDataService getCashBillData() {
-		try {
+		case CashBillData.NAME:
 			return new CashBillData();
-		} catch (RemoteException e) {
-			e.printStackTrace();
+		default:
 			return null;
 		}
 	}

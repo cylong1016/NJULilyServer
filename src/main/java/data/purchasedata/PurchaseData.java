@@ -4,11 +4,12 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import common.ParseXML;
 import po.PurchasePO;
+
+import common.ParseXML;
+
 import data.CommonData;
 import dataenum.BillType;
-import dataservice.TableInfoService;
 import dataservice.purchasedataservice.PurchaseDataService;
 
 /**
@@ -40,7 +41,7 @@ public class PurchaseData extends CommonData<PurchasePO> implements PurchaseData
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("PurchaseData");
+		parsexml = new ParseXML(NAME);
 		purchaseID = parsexml.getValue("purchaseID");
 		purchasebackID = parsexml.getValue("purchasebackID");
 		dateRecord = parsexml.getValue("dateRecord");
@@ -66,14 +67,6 @@ public class PurchaseData extends CommonData<PurchasePO> implements PurchaseData
 		default:
 			return null;
 		}
-	}
-
-	/**
-	 * @see dataservice.purchasedataservice.PurchaseDataService#getInfo()
-	 */
-	@Override
-	public TableInfoService<PurchasePO> getInfo() throws RemoteException {
-		return new PurchaseInfo();
 	}
 
 	/**

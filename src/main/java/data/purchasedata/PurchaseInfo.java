@@ -5,13 +5,14 @@ import java.rmi.RemoteException;
 import po.PurchasePO;
 import data.TableInfo;
 import dataenum.Storage;
+import dataservice.purchasedataservice.PurchaseInfoService;
 
 /**
  * dataservice.purchasedataservice.PurchaseInfoService
  * @author cylong
  * @version 2014年12月2日 上午3:28:29
  */
-public class PurchaseInfo extends TableInfo<PurchasePO> {
+public class PurchaseInfo extends TableInfo<PurchasePO> implements PurchaseInfoService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 7513313073337006506L;

@@ -5,13 +5,14 @@ import java.rmi.RemoteException;
 import po.SalesPO;
 import data.TableInfo;
 import dataenum.Storage;
+import dataservice.saledataservice.SaleInfoService;
 
 /**
  * @see dataservice.saledataservice.SaleInfoService
  * @author cylong
  * @version 2014年12月2日 上午3:29:07
  */
-public class SaleInfo extends TableInfo<SalesPO> {
+public class SaleInfo extends TableInfo<SalesPO> implements SaleInfoService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 6622297309490703986L;

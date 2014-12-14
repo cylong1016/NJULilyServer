@@ -32,7 +32,7 @@ public class PromotionData extends CommonData<PromotionPO> implements PromotionD
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("PromotionData");
+		parsexml = new ParseXML(NAME);
 		prefix = parsexml.getValue("prefix");
 	}
 

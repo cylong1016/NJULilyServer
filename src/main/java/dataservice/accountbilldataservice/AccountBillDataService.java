@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import po.AccountBillPO;
 import dataenum.BillType;
 import dataservice.CommonDataService;
-import dataservice.TableInfoService;
 
 /**
  * 收款单、付款单、现金单的集体载入、保存、查看修改操作
@@ -14,6 +13,9 @@ import dataservice.TableInfoService;
  * @version Oct 26, 2014 3:51:07 PM
  */
 public interface AccountBillDataService extends CommonDataService<AccountBillPO> {
+
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "AccountBillData";
 
 	/**
 	 * 根据单据类型生成编号
@@ -33,10 +35,4 @@ public interface AccountBillDataService extends CommonDataService<AccountBillPO>
 	 */
 	public ArrayList<AccountBillPO> show(BillType type) throws RemoteException;
 
-	/**
-	 * @return AccountBillInfoService 的实例
-	 * @author cylong
-	 * @version 2014年12月2日 上午2:42:37
-	 */
-	public TableInfoService<AccountBillPO> getInfo() throws RemoteException;
 }

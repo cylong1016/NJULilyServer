@@ -34,7 +34,7 @@ public class AccountData extends CommonData<AccountPO> implements AccountDataSer
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("AccountData");
+		parsexml = new ParseXML(NAME);
 		prefix = parsexml.getValue("prefix");
 	}
 

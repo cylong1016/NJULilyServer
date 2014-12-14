@@ -33,7 +33,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("UserData");
+		parsexml = new ParseXML(NAME);
 		prefix = parsexml.getValue("prefix");
 	}
 

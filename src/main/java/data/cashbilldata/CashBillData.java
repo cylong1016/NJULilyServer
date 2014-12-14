@@ -4,10 +4,11 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import common.ParseXML;
 import po.CashBillPO;
+
+import common.ParseXML;
+
 import data.CommonData;
-import dataservice.TableInfoService;
 import dataservice.cashbilldataservice.CashBillDataService;
 
 /**
@@ -39,7 +40,7 @@ public class CashBillData extends CommonData<CashBillPO> implements CashBillData
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("CashBillData");
+		parsexml = new ParseXML(NAME);
 		prefix = parsexml.getValue("prefix");
 		dateRecord = parsexml.getValue("dateRecord");
 		String dateFormat = parsexml.getValue("dateFormat");
@@ -64,14 +65,6 @@ public class CashBillData extends CommonData<CashBillPO> implements CashBillData
 			return null;
 		}
 		return prefix + "-" + currentDate + "-" + ID;
-	}
-
-	/**
-	 * @see dataservice.cashbilldataservice.CashBillDataService#getInfo()
-	 */
-	@Override
-	public TableInfoService<CashBillPO> getInfo() throws RemoteException {
-		return new CashBillInfo();
 	}
 
 }

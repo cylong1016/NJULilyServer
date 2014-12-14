@@ -12,6 +12,9 @@ import po.CommoditySortPO;
  */
 public interface CommoditySortDataService extends CommonDataService<CommoditySortPO> {
 
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "CommoditySortData";
+
 	/**
 	 * @param fatherID 分类父类的ID
 	 * @return 新建分类的ID
@@ -19,4 +22,5 @@ public interface CommoditySortDataService extends CommonDataService<CommoditySor
 	 * @version 2014年12月1日 下午9:20:35
 	 */
 	public String getID(String fatherID) throws RemoteException;
+
 }

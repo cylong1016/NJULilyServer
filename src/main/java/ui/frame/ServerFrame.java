@@ -10,7 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import ui.frame.title.TitlePanel;
-import common.Sleep;
+
+import common.Common;
+
 import config.SystemConfig;
 import config.UIConfig;
 
@@ -54,7 +56,7 @@ public class ServerFrame extends JFrame {
 
 		public void run() {
 			while(true) {
-				Sleep.sleep(20);
+				Common.sleep(20);
 				hyalineValue += 0.025f;
 				if (hyalineValue > 1) {
 					hyalineValue = 1;

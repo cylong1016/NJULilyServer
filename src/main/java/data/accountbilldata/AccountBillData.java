@@ -5,11 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import common.ParseXML;
 import po.AccountBillPO;
+
+import common.ParseXML;
+
 import data.CommonData;
 import dataenum.BillType;
-import dataservice.TableInfoService;
 import dataservice.accountbilldataservice.AccountBillDataService;
 
 /**
@@ -40,7 +41,7 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("AccountBillData");
+		parsexml = new ParseXML(NAME);
 		expenseID = parsexml.getValue("expenseID");
 		payID = parsexml.getValue("payID");
 		dateRecord = parsexml.getValue("dateRecord");
@@ -80,14 +81,6 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 			}
 		}
 		return bills;
-	}
-
-	/**
-	 * @see dataservice.accountbilldataservice.AccountBillDataService#getInfo()
-	 */
-	@Override
-	public TableInfoService<AccountBillPO> getInfo() throws RemoteException {
-		return new AccountBillInfo();
 	}
 
 }

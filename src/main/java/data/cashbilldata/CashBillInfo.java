@@ -2,15 +2,16 @@ package data.cashbilldata;
 
 import java.rmi.RemoteException;
 
-import data.TableInfo;
 import po.CashBillPO;
+import data.TableInfo;
+import dataservice.cashbilldataservice.CashBillInfoService;
 
 /**
  * @see dataservice.cashbilldataservice.CashBillInfoService
  * @author cylong
  * @version 2014年12月2日 上午3:25:43
  */
-public class CashBillInfo extends TableInfo<CashBillPO> {
+public class CashBillInfo extends TableInfo<CashBillPO> implements CashBillInfoService {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2613556257030674855L;

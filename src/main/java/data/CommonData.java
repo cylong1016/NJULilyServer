@@ -1,7 +1,5 @@
 package data;
 
-import io.DefineList;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -9,6 +7,7 @@ import java.util.ArrayList;
 import message.ResultMessage;
 import po.PersistentObject;
 import common.Common;
+import common.DefineList;
 import common.ParseXML;
 import dataenum.BillType;
 import dataservice.CommonDataService;
@@ -188,14 +187,6 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	@Override
 	public ArrayList<PO> show() throws RemoteException {
 		return poList.getInList();
-	}
-
-	/**
-	 * @see dataservice.DataService#getServiceName()
-	 */
-	@Override
-	public String getServiceName() throws RemoteException {
-		return parsexml.getValue("name");
 	}
 
 }

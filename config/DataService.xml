@@ -12,7 +12,7 @@
 		<path>data/UserList.ser</path>
 		<prefix>YH</prefix>
 		<initID>1</initID>
-		<maxID>00020</maxID>
+		<maxID>00021</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -42,7 +42,7 @@
 	<Data>
 		<name>CommoditySortData</name>
 		<path>data/CommoditySortList.ser</path>
-		<maxID>26</maxID>
+		<maxID>1</maxID>
 		<IDMaxBit>2</IDMaxBit>
 	</Data>
 	<Data>

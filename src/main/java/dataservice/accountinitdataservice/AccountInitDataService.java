@@ -12,7 +12,10 @@ import dataservice.DataService;
  * @author cylong
  * @version Oct 26, 2014 3:54:11 PM
  */
-public interface AccountaInitDataService extends DataService<AccountaInitPO> {
+public interface AccountInitDataService extends DataService<AccountaInitPO> {
+
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "AccountInitData";
 
 	/**
 	 * 向序列化数据中插入一个期初建账信息

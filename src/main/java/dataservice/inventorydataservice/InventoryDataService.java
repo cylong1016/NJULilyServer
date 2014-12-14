@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import po.InventoryBillPO;
 import dataenum.BillType;
 import dataservice.CommonDataService;
-import dataservice.TableInfoService;
 
 /**
  * 提供库存单据的提交服务（赠送单、报溢单、报损单、报警单）
@@ -15,6 +14,9 @@ import dataservice.TableInfoService;
  * @version Oct 26, 2014 3:33:20 PM
  */
 public interface InventoryDataService extends CommonDataService<InventoryBillPO> {
+
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "InventoryData";
 
 	/**
 	 * @deprecated 分成4个子方法
@@ -61,17 +63,11 @@ public interface InventoryDataService extends CommonDataService<InventoryBillPO>
 	public String returnNumber() throws RemoteException;
 
 	/**
-	 * @return InventoryInfoService 的实例
-	 * @author cylong
-	 * @version 2014年12月2日 上午2:45:01
-	 */
-	public TableInfoService<InventoryBillPO> getInfo() throws RemoteException;
-
-	/**
 	 * @param type 单据类型
 	 * @return 按照单据类型返回单据
 	 * @author cylong
 	 * @version 2014年12月2日 下午10:02:54
 	 */
 	public ArrayList<InventoryBillPO> show(BillType type) throws RemoteException;
+
 }

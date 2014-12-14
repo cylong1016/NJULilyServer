@@ -34,7 +34,7 @@ public class ClientData extends CommonData<ClientPO> implements ClientDataServic
 	 */
 	@Override
 	public void init() throws RemoteException {
-		parsexml = new ParseXML("ClientData");
+		parsexml = new ParseXML(NAME);
 		prefix = parsexml.getValue("prefix");
 	}
 

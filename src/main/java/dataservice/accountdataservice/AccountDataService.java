@@ -14,6 +14,9 @@ import dataservice.CommonDataService;
  */
 public interface AccountDataService extends CommonDataService<AccountPO> {
 
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "AccountData";
+
 	/**
 	 * 以keywords查看账户信息，type是以什么方式查找，null代表模糊查找
 	 * @param keywords

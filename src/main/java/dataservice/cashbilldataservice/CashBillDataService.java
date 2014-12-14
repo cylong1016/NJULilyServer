@@ -1,17 +1,11 @@
 package dataservice.cashbilldataservice;
 
-import java.rmi.RemoteException;
-
 import po.CashBillPO;
 import dataservice.CommonDataService;
-import dataservice.TableInfoService;
 
 public interface CashBillDataService extends CommonDataService<CashBillPO> {
 
-	/**
-	 * @return CashBillInfoService 的实例
-	 * @author cylong
-	 * @version 2014年12月2日 上午2:45:35
-	 */
-	public TableInfoService<CashBillPO> getInfo() throws RemoteException;
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "CashBillData";
+	
 }
