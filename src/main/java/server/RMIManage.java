@@ -39,10 +39,20 @@ import data.userdata.UserData;
 public class RMIManage {
 
 	private Remote reg;
-	private String host;
+	private InetAddress addr;
+	private String hostAddr;
+	private String hostName;
 
-	public String getHost() {
-		return this.host;
+	private boolean isStarted;
+
+	public RMIManage() {
+		try {
+			addr = InetAddress.getLocalHost();
+			hostAddr = addr.getHostAddress();
+			hostName = addr.getHostName();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void startServer() {
@@ -50,9 +60,10 @@ public class RMIManage {
 			// 本地主机上的远程对象注册表Registry的实例，并指定端口为por
 			// 这一步必不可少（Java默认端口是1099），必不可缺的一步，缺少注册表创建，则无法绑定对象到远程注册表上 
 			reg = LocateRegistry.createRegistry(RMIConfig.PORT);
-			InetAddress addr = InetAddress.getLocalHost();
-			host = addr.getHostAddress();
-			String prefix = "rmi://" + host + ":" + RMIConfig.PORT + "/";
+			String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
+			addr = InetAddress.getLocalHost();
+			hostAddr = addr.getHostAddress();
+			hostName = addr.getHostName();
 
 			Naming.bind(prefix + UserData.NAME, DataFactory.createDataService(UserData.NAME));
 			Naming.bind(prefix + AccountInitData.NAME, DataFactory.createDataService(AccountInitData.NAME));
@@ -73,8 +84,7 @@ public class RMIManage {
 			Naming.bind(prefix + CashBillInfo.NAME, InfoFactory.createInfoService(CashBillInfo.NAME));
 			Naming.bind(prefix + AccountBillInfo.NAME, InfoFactory.createInfoService(AccountBillInfo.NAME));
 
-			System.out.println(">>>>>INFO:远程服务器启动！");
-			System.out.println(">>>>>INFO:远程服务器正在运行！");
+			isStarted = true;
 		} catch (RemoteException e) {
 			System.out.println("创建远程对象发生异常！");
 			e.printStackTrace();
@@ -85,7 +95,6 @@ public class RMIManage {
 			System.out.println("发生重复绑定对象异常！");
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
-			System.out.println("未知主机异常！");
 			e.printStackTrace();
 		}
 	}
@@ -96,7 +105,19 @@ public class RMIManage {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		System.out.println(">>>>>INFO:远程服务器关闭！");
+		isStarted = false;
+	}
+
+	public String getHostAddr() {
+		return this.hostAddr;
+	}
+
+	public String getHostName() {
+		return this.hostName;
+	}
+
+	public boolean isStarted() {
+		return this.isStarted;
 	}
 
 }

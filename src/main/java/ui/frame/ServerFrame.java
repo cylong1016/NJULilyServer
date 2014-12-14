@@ -82,11 +82,11 @@ public class ServerFrame extends JFrame {
 	public void setDragable() {
 		this.addMouseListener(new MouseAdapter() {
 
-			public void mouseReleased(java.awt.event.MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				isDragged = false;
 			}
 
-			public void mousePressed(java.awt.event.MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				tmp = new Point(e.getX(), e.getY());
 				isDragged = true;
 			}

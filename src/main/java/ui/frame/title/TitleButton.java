@@ -25,7 +25,7 @@ public class TitleButton extends JLabel {
 		this.setSize(size);
 		this.setOpaque(true); // 不透明
 		this.addMouseListener(new ButtonListener());
-		this.setBackground(UIConfig.BUTTON_BACK_COLOR);
+		this.setBackground(UIConfig.BTN_BACK_COLOR);
 	}
 
 	private class ButtonListener extends MouseAdapter {
@@ -37,7 +37,7 @@ public class TitleButton extends JLabel {
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			TitleButton.this.setBackground(UIConfig.BUTTON_BACK_COLOR);
+			TitleButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
 		}
 	}
 

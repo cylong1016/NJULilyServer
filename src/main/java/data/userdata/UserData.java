@@ -1,6 +1,10 @@
 package data.userdata;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.rmi.RemoteException;
+import java.rmi.server.RemoteServer;
+import java.rmi.server.ServerNotActiveException;
 
 import message.ResultMessage;
 import po.UserPO;
@@ -65,6 +69,19 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 	 */
 	@Override
 	public boolean checkAdmin(AdminInfo admin) throws RemoteException {
+
+		try {
+			//获取RMI客户端主机
+			String clienthost = RemoteServer.getClientHost();
+			InetAddress ia = java.net.InetAddress.getByName(clienthost);
+			String clientIp = ia.getHostAddress();
+			System.out.println(clientIp);
+		} catch (ServerNotActiveException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+
 		AdminInfo adminInfo = loadAdminInfo();	// 从文件中读取的AdminInfo
 		if (adminInfo.equals(admin)) {
 			return true;

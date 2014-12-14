@@ -20,11 +20,11 @@ public class ServerButton extends JLabel {
 
 	public ServerButton(String text) {
 		super(text, JLabel.CENTER);
-		this.setFont(UIConfig.FONT);	// 文本字体
-		this.setForeground(UIConfig.FONT_COLOR);	// 文本颜色
+		this.setFont(UIConfig.BTN_FONT);	// 文本字体
+		this.setForeground(UIConfig.BTN_FORE_COLOR);	// 文本颜色
 		this.setOpaque(true);
 		this.addMouseListener(new ButtonListener());
-		this.setBackground(UIConfig.BUTTON_BACK_COLOR);
+		this.setBackground(UIConfig.BTN_BACK_COLOR);
 	}
 
 	private class ButtonListener extends MouseAdapter {
@@ -36,7 +36,7 @@ public class ServerButton extends JLabel {
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			ServerButton.this.setBackground(UIConfig.BUTTON_BACK_COLOR);
+			ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
 		}
 	}
 }

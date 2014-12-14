@@ -1,7 +1,5 @@
 package ui.frame.title;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -43,16 +41,17 @@ public class TitlePanel extends JPanel {
 		this.setLayout(null);
 		this.setOpaque(true);
 		this.setSize(UIConfig.WIDTH, UIConfig.TITLE_HEIGHT);
-		this.setBackground(Color.CYAN);
+		this.setBackground(UIConfig.TITLE_BACK_COLOR);
 		addTitleButton(); // 添加最大化最小化按钮
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
-		Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D)g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.setFont(new Font("黑体", Font.PLAIN, 25));
+		super.paint(g2d);
+		g2d.setFont(UIConfig.TITLE_FONT);
+		g2d.setColor(UIConfig.TITLE_FORE_COLOR);
 		g2d.drawString(SystemConfig.TITLE, 310, interval + UIConfig.TITLE_BTN_H);
 	}
 
