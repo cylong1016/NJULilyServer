@@ -8,7 +8,9 @@ import java.rmi.server.ServerNotActiveException;
 
 import message.ResultMessage;
 import po.UserPO;
+
 import common.ParseXML;
+
 import data.CommonData;
 import dataservice.userdataservice.AdminInfo;
 import dataservice.userdataservice.UserDataService;
@@ -73,9 +75,9 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 		try {
 			//获取RMI客户端主机
 			String clienthost = RemoteServer.getClientHost();
-			InetAddress ia = java.net.InetAddress.getByName(clienthost);
+			InetAddress ia = InetAddress.getByName(clienthost);
 			String clientIp = ia.getHostAddress();
-			System.out.println(clientIp);
+			System.out.println("服务器收到：" + clientIp);
 		} catch (ServerNotActiveException e) {
 			e.printStackTrace();
 		} catch (UnknownHostException e) {

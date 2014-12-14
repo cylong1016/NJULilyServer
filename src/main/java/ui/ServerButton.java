@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -24,19 +23,42 @@ public class ServerButton extends JLabel {
 		this.setForeground(UIConfig.BTN_FORE_COLOR);	// 文本颜色
 		this.setOpaque(true);
 		this.addMouseListener(new ButtonListener());
-		this.setBackground(UIConfig.BTN_BACK_COLOR);
+		this.setBackground(UIConfig.BTN_BACK_COLOR);	// 按钮背景色
 	}
 
+	@Override
+	public void setEnabled(boolean enabled) {
+		this.setBackground(UIConfig.BTN_BACK_COLOR);
+		super.setEnabled(enabled);
+	}
+	
 	private class ButtonListener extends MouseAdapter {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			ServerButton.this.setBackground(Color.RED);
+			if(ServerButton.this.isEnabled()) {
+				ServerButton.this.setBackground(UIConfig.ENTERED_BTN_BACK_COLOR);
+			}
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
+			if(ServerButton.this.isEnabled()) {
+				ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
+			}
 		}
+
+		public void mousePressed(MouseEvent e) {
+			if(ServerButton.this.isEnabled()) {
+				ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
+			}
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			if(ServerButton.this.isEnabled()) {
+				ServerButton.this.setBackground(UIConfig.ENTERED_BTN_BACK_COLOR);
+			}
+		}
+
 	}
 }

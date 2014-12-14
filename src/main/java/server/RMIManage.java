@@ -56,47 +56,7 @@ public class RMIManage {
 	}
 
 	public void startServer() {
-		try {
-			// 本地主机上的远程对象注册表Registry的实例，并指定端口为por
-			// 这一步必不可少（Java默认端口是1099），必不可缺的一步，缺少注册表创建，则无法绑定对象到远程注册表上 
-			reg = LocateRegistry.createRegistry(RMIConfig.PORT);
-			String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
-			addr = InetAddress.getLocalHost();
-			hostAddr = addr.getHostAddress();
-			hostName = addr.getHostName();
-
-			Naming.bind(prefix + UserData.NAME, DataFactory.createDataService(UserData.NAME));
-			Naming.bind(prefix + AccountInitData.NAME, DataFactory.createDataService(AccountInitData.NAME));
-			Naming.bind(prefix + AccountBillData.NAME, DataFactory.createDataService(AccountBillData.NAME));
-			Naming.bind(prefix + AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
-			Naming.bind(prefix + CashBillData.NAME, DataFactory.createDataService(CashBillData.NAME));
-			Naming.bind(prefix + ClientData.NAME, DataFactory.createDataService(ClientData.NAME));
-			Naming.bind(prefix + CommodityData.NAME, DataFactory.createDataService(CommodityData.NAME));
-			Naming.bind(prefix + CommoditySortData.NAME, DataFactory.createDataService(CommoditySortData.NAME));
-			Naming.bind(prefix + InventoryData.NAME, DataFactory.createDataService(InventoryData.NAME));
-			Naming.bind(prefix + PromotionData.NAME, DataFactory.createDataService(PromotionData.NAME));
-			Naming.bind(prefix + PurchaseData.NAME, DataFactory.createDataService(PurchaseData.NAME));
-			Naming.bind(prefix + SaleData.NAME, DataFactory.createDataService(SaleData.NAME));
-
-			Naming.bind(prefix + SaleInfo.NAME, InfoFactory.createInfoService(SaleInfo.NAME));
-			Naming.bind(prefix + PurchaseInfo.NAME, InfoFactory.createInfoService(PurchaseInfo.NAME));
-			Naming.bind(prefix + InventoryInfo.NAME, InfoFactory.createInfoService(InventoryInfo.NAME));
-			Naming.bind(prefix + CashBillInfo.NAME, InfoFactory.createInfoService(CashBillInfo.NAME));
-			Naming.bind(prefix + AccountBillInfo.NAME, InfoFactory.createInfoService(AccountBillInfo.NAME));
-
-			isStarted = true;
-		} catch (RemoteException e) {
-			System.out.println("创建远程对象发生异常！");
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			System.out.println("发生URL畸形异常！");
-			e.printStackTrace();
-		} catch (AlreadyBoundException e) {
-			System.out.println("发生重复绑定对象异常！");
-			e.printStackTrace();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		new Server().start();
 	}
 
 	public void stopServer() {
@@ -118,6 +78,59 @@ public class RMIManage {
 
 	public boolean isStarted() {
 		return this.isStarted;
+	}
+
+	/**
+	 * 启动服务的线程，防止启动时候卡顿
+	 * @author cylong
+	 * @version 2014年12月15日 上午2:39:38
+	 */
+	private class Server extends Thread {
+
+		@Override
+		public void run() {
+			try {
+				// 本地主机上的远程对象注册表Registry的实例，并指定端口为por
+				// 这一步必不可少（Java默认端口是1099），必不可缺的一步，缺少注册表创建，则无法绑定对象到远程注册表上 
+				reg = LocateRegistry.createRegistry(RMIConfig.PORT);
+				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
+				addr = InetAddress.getLocalHost();
+				hostAddr = addr.getHostAddress();
+				hostName = addr.getHostName();
+
+				Naming.bind(prefix + UserData.NAME, DataFactory.createDataService(UserData.NAME));
+				Naming.bind(prefix + AccountInitData.NAME, DataFactory.createDataService(AccountInitData.NAME));
+				Naming.bind(prefix + AccountBillData.NAME, DataFactory.createDataService(AccountBillData.NAME));
+				Naming.bind(prefix + AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
+				Naming.bind(prefix + CashBillData.NAME, DataFactory.createDataService(CashBillData.NAME));
+				Naming.bind(prefix + ClientData.NAME, DataFactory.createDataService(ClientData.NAME));
+				Naming.bind(prefix + CommodityData.NAME, DataFactory.createDataService(CommodityData.NAME));
+				Naming.bind(prefix + CommoditySortData.NAME, DataFactory.createDataService(CommoditySortData.NAME));
+				Naming.bind(prefix + InventoryData.NAME, DataFactory.createDataService(InventoryData.NAME));
+				Naming.bind(prefix + PromotionData.NAME, DataFactory.createDataService(PromotionData.NAME));
+				Naming.bind(prefix + PurchaseData.NAME, DataFactory.createDataService(PurchaseData.NAME));
+				Naming.bind(prefix + SaleData.NAME, DataFactory.createDataService(SaleData.NAME));
+
+				Naming.bind(prefix + SaleInfo.NAME, InfoFactory.createInfoService(SaleInfo.NAME));
+				Naming.bind(prefix + PurchaseInfo.NAME, InfoFactory.createInfoService(PurchaseInfo.NAME));
+				Naming.bind(prefix + InventoryInfo.NAME, InfoFactory.createInfoService(InventoryInfo.NAME));
+				Naming.bind(prefix + CashBillInfo.NAME, InfoFactory.createInfoService(CashBillInfo.NAME));
+				Naming.bind(prefix + AccountBillInfo.NAME, InfoFactory.createInfoService(AccountBillInfo.NAME));
+
+				isStarted = true;
+			} catch (RemoteException e) {
+				System.out.println("创建远程对象发生异常！");
+				e.printStackTrace();
+			} catch (MalformedURLException e) {
+				System.out.println("发生URL畸形异常！");
+				e.printStackTrace();
+			} catch (AlreadyBoundException e) {
+				System.out.println("发生重复绑定对象异常！");
+				e.printStackTrace();
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

@@ -4,7 +4,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import server.RMIManage;
-import ui.ServerButton;
 import ui.ServerPanel;
 
 /**
@@ -19,55 +18,34 @@ public class StartPanel extends ServerPanel {
 
 	private ServerInfoPanel infoPanel;
 	/** 启动服务器按钮 */
-	private ServerButton startBtn;
+	private StartButton startBtn;
 	/** 关闭服务器按钮 */
-	private ServerButton stopBtn;
+	private StartButton stopBtn;
 
-	private int buttonX = 100;
-	private int buttonY = 100;
-	private int buttonW = 120;
-	private int buttonH = 60;
+	private int buttonX = 0;
+	private int buttonY = 364;
+	/** 开始按钮和关闭按钮之间的间隙 */
+	private int interval = 0;
 
 	private RMIManage server;
 
 	public StartPanel() {
+
 		server = new RMIManage();
-		
+
 		infoPanel = new ServerInfoPanel(server.getHostAddr(), server.getHostName(), server.isStarted());
 		this.add(infoPanel);
-		
+
 		ButtonListener listener = new ButtonListener();
-		startBtn = new ServerButton("启动服务");
-		startBtn.setBounds(buttonX, buttonY, buttonW, buttonH);
+		startBtn = new StartButton("启动服务");
+		startBtn.setLocation(buttonX, buttonY);
 		startBtn.addMouseListener(listener);
 		this.add(startBtn);
-		stopBtn = new ServerButton("关闭服务");
-		stopBtn.setBounds(buttonX, buttonY, buttonW, buttonH);
+		stopBtn = new StartButton("关闭服务");
+		stopBtn.setLocation(buttonX + startBtn.getWidth() + interval, buttonY);
 		stopBtn.addMouseListener(listener);
 		this.add(stopBtn);
-		this.showStartButton();
-	}
-
-	/**
-	 * 显示启动按钮，同时删除关闭按钮
-	 * @author cylong
-	 * @version 2014年12月12日 上午4:37:10
-	 */
-	private void showStartButton() {
-		startBtn.setVisible(true);
-		stopBtn.setVisible(false);
-		repaint();
-	}
-
-	/**
-	 * 显示关闭按钮，同时删除启动按钮
-	 * @author cylong
-	 * @version 2014年12月12日 上午4:37:28
-	 */
-	private void showStopButton() {
-		stopBtn.setVisible(true);
-		startBtn.setVisible(false);
-		repaint();
+		stopBtn.setEnabled(false);
 	}
 
 	private class ButtonListener extends MouseAdapter {
@@ -75,13 +53,19 @@ public class StartPanel extends ServerPanel {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == startBtn) {
-				showStopButton();
-				server.startServer();
-				infoPanel.setStarted(server.isStarted());
+				if (!server.isStarted()) {
+					startBtn.setEnabled(false);
+					stopBtn.setEnabled(true);
+					server.startServer();
+					infoPanel.setStarted(true);
+				}
 			} else if (e.getSource() == stopBtn) {
-				showStartButton();
-				server.stopServer();
-				infoPanel.setStarted(server.isStarted());
+				if (server.isStarted()) {
+					startBtn.setEnabled(true);
+					stopBtn.setEnabled(false);
+					server.stopServer();
+					infoPanel.setStarted(false);
+				}
 			}
 		}
 	}

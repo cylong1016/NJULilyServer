@@ -1,6 +1,5 @@
 package ui.frame.title;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,19 +24,19 @@ public class TitleButton extends JLabel {
 		this.setSize(size);
 		this.setOpaque(true); // 不透明
 		this.addMouseListener(new ButtonListener());
-		this.setBackground(UIConfig.BTN_BACK_COLOR);
+		this.setBackground(UIConfig.TITLE_BUTTON_BACK_COLOR);
 	}
 
 	private class ButtonListener extends MouseAdapter {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			TitleButton.this.setBackground(Color.RED);
+			TitleButton.this.setBackground(UIConfig.ENTERED_BTN_BACK_COLOR);
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			TitleButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
+			TitleButton.this.setBackground(UIConfig.TITLE_BUTTON_BACK_COLOR);
 		}
 	}
 

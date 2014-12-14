@@ -30,7 +30,9 @@ public class UIConfig {
 	/** 标题字体颜色 */
 	public static Color TITLE_FORE_COLOR = Color.BLACK;
 	/** 标题背景颜色 */
-	public static Color TITLE_BACK_COLOR = Color.CYAN;
+	public static Color TITLE_BACK_COLOR = new Color(0, 122, 204);
+	/** 标题按钮背景颜色 */
+	public static Color TITLE_BUTTON_BACK_COLOR = new Color(207, 207, 207);
 	/** 标题栏按钮的宽【最小化，关闭按钮】 */
 	public static int TITLE_BTN_W;
 	/** 标题栏按钮的高【最小化，关闭按钮】 */
@@ -49,6 +51,8 @@ public class UIConfig {
 	public static Color BTN_FORE_COLOR;
 	/** button背景颜色 */
 	public static Color BTN_BACK_COLOR;
+	/** 移动到button上的背景颜色 */
+	public static Color ENTERED_BTN_BACK_COLOR = Color.RED;
 
 	static {
 		ParseXML parse = new ParseXML("config/UI.xml", "Button");

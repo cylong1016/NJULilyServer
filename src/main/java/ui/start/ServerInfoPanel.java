@@ -21,15 +21,15 @@ public class ServerInfoPanel extends JPanel {
 	private String hostName;
 	private boolean isStarted;
 
-	private int panelX = 80;
-	private int panelY = 250;
-	private int panelW = 300;
-	private int panelH = 150;
+	private int panelX = 0;
+	private int panelY = 0;
+	private int panelW = 600;
+	private int panelH = 364;
 
 	/** 显示的内容的x坐标 */
-	private int x = 30;
+	private int x = 190;
 	/** 显示的内容的y坐标 */
-	private int y = 50;
+	private int y = 150;
 	/** 内容的行间距 */
 	private int interval = 30;
 
