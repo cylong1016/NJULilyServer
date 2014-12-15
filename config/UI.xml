@@ -2,24 +2,13 @@
 <Config>
 	<Data>
 		<name>UISize</name>
-		<width>600</width>
-		<height>450</height>
+		<width>900</width>
+		<height>600</height>
 	</Data>
 	<Data>
 		<name>Title</name>
 		<height>36</height>
 		<title_btn_width>32</title_btn_width>
 		<title_btn_height>16</title_btn_height>
-	</Data>
-	<Data>
-		<name>Button</name>
-		<size>25</size>
-		<style>黑体</style>
-		<fontR>17</fontR>
-		<fontG>17</fontG>
-		<fontB>17</fontB>
-		<button_backR>218</button_backR>
-		<button_backG>112</button_backG>
-		<button_backB>214</button_backB>
 	</Data>
 </Config>

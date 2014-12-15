@@ -16,13 +16,16 @@ public class UIConfig {
 	public static int WIDTH;
 	/** 界面的高 */
 	public static int HEIGHT;
-
+	/** 主界面的背景色 */
+	public static Color MAIN_COLOR = Color.WHITE;
+	
 	static {
 		ParseXML parse = new ParseXML("config/UI.xml", "UISize");
 		WIDTH = Integer.parseInt(parse.getValue("width"));
 		HEIGHT = Integer.parseInt(parse.getValue("height"));
 	}
 
+	/*----------------------------标题配置--------------------------------*/
 	/** 标题栏高 */
 	public static int TITLE_HEIGHT;
 	/** 标题字体 */
@@ -30,9 +33,9 @@ public class UIConfig {
 	/** 标题字体颜色 */
 	public static Color TITLE_FORE_COLOR = Color.BLACK;
 	/** 标题背景颜色 */
-	public static Color TITLE_BACK_COLOR = new Color(0, 122, 204);
+	public static Color TITLE_BACK_COLOR = new Color(0x2D2D30);
 	/** 标题按钮背景颜色 */
-	public static Color TITLE_BUTTON_BACK_COLOR = new Color(207, 207, 207);
+	public static Color TITLE_BUTTON_BACK_COLOR = Color.LIGHT_GRAY;
 	/** 标题栏按钮的宽【最小化，关闭按钮】 */
 	public static int TITLE_BTN_W;
 	/** 标题栏按钮的高【最小化，关闭按钮】 */
@@ -44,36 +47,41 @@ public class UIConfig {
 		TITLE_BTN_W = Integer.parseInt(parse.getValue("title_btn_width"));
 		TITLE_BTN_H = Integer.parseInt(parse.getValue("title_btn_height"));
 	}
+	/*----------------------------标题配置--------------------------------*/
 
+	/*----------------------------通用按钮配置--------------------------------*/
 	/** button字体 */
-	public static Font BTN_FONT;
+	public static Font BTN_FONT = new Font("黑体", Font.PLAIN, 30);
 	/** button字体颜色 */
-	public static Color BTN_FORE_COLOR;
+	public static Color BTN_FORE_COLOR = Color.BLACK;
 	/** button背景颜色 */
-	public static Color BTN_BACK_COLOR;
+	public static Color BTN_BACK_COLOR = Color.LIGHT_GRAY;
 	/** 移动到button上的背景颜色 */
-	public static Color ENTERED_BTN_BACK_COLOR = Color.RED;
-
-	static {
-		ParseXML parse = new ParseXML("config/UI.xml", "Button");
-		int size = Integer.parseInt(parse.getValue("size")); // 字体大小
-		String style = parse.getValue("style");
-		BTN_FONT = new Font(style, Font.PLAIN, size);
-		int fontR = Integer.parseInt(parse.getValue("fontR"));
-		int fontG = Integer.parseInt(parse.getValue("fontG"));
-		int fontB = Integer.parseInt(parse.getValue("fontB"));
-		BTN_FORE_COLOR = new Color(fontR, fontG, fontB);
-		int button_backR = Integer.parseInt(parse.getValue("button_backR"));
-		int button_backG = Integer.parseInt(parse.getValue("button_backG"));
-		int button_backB = Integer.parseInt(parse.getValue("button_backB"));
-		BTN_BACK_COLOR = new Color(button_backR, button_backG, button_backB);
-	}
-
+	public static Color ENTERED_BTN_BACK_COLOR = Color.GRAY;
+	/*----------------------------通用按钮配置--------------------------------*/
+	
+	/*----------------------------文本配置--------------------------------*/
 	/** 文本字体 */
 	public static Font TEXT_FONT = new Font("黑体", Font.PLAIN, 20);
 	/** 文本字体颜色 */
-	public static Color TEXT_FORE_COLOR = Color.BLACK;
+	public static Color TEXT_FORE_COLOR = new Color(0x000000);
 	/** 文本背景颜色 */
-	public static Color TEXT_BACK_COLOR = Color.CYAN;
+	public static Color TEXT_BACK_COLOR = new Color(0xEEEEEE);
+	/*----------------------------文本配置--------------------------------*/
+
+	/*----------------------------表格配置--------------------------------*/
+	/** 表格字体 */
+	public static Font TABLE_FONT = new Font("黑体", Font.PLAIN, 18);
+	/** 表格字体颜色 */
+	public static Color TABLE_FORE_COLOR = Color.BLACK;
+	/** 表格边框颜色 */
+	public static Color TABLE_BORDER_COLOR = Color.BLACK;
+	/** 表头前景颜色 */
+	public static Color TABLE_HEADER_FORE_COLOR = Color.BLACK;
+	/** 表头背景颜色 */
+	public static Color TABLE_HEADER_BACK_COLOR = Color.LIGHT_GRAY;
+	/** 选择后的前景色 */
+	public static Color TABLE_SELECTIONFORE = Color.BLACK;
+	/*----------------------------表格配置--------------------------------*/
 
 }

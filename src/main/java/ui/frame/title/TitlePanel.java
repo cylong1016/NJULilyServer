@@ -51,7 +51,6 @@ public class TitlePanel extends JPanel {
 		super.paint(g2d);
 		g2d.setFont(UIConfig.TITLE_FONT);
 		g2d.setColor(UIConfig.TITLE_FORE_COLOR);
-//		g2d.drawString(SystemConfig.TITLE, 310, interval + UIConfig.TITLE_BTN_H);
 	}
 
 	private void addTitleButton() {
