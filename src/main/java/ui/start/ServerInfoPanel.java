@@ -56,7 +56,7 @@ public class ServerInfoPanel extends ServerPanel {
 		g2d.drawString("主机地址：" + hostAddr, x, y);
 		g2d.drawString("主机名称：" + hostName, x, y + interval);
 		if (isStarted) {
-			g2d.drawString("主机状态：开启", x, y + interval * 2);
+			g2d.drawString("主机状态：运行中", x, y + interval * 2);
 		} else {
 			g2d.drawString("主机状态：关闭", x, y + interval * 2);
 		}
@@ -118,7 +118,7 @@ public class ServerInfoPanel extends ServerPanel {
 				}
 				Common.sleep(100);
 				millisecond++;
-				if(millisecond == 10) {
+				if (millisecond == 10) {
 					millisecond -= 10;
 					second++;
 					if (second == 60) {
