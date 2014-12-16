@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import po.InventoryBillPO;
-
+import common.Common;
 import common.ParseXML;
-
 import data.CommonData;
 import dataenum.BillType;
 import dataservice.inventorydataservice.InventoryDataService;
@@ -31,6 +30,8 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	private String alarmID;
 	/** ZSD */
 	private String giftID;
+	/** 盘点的批号 */
+	private int lotNumber;
 
 	/**
 	 * @throws RemoteException
@@ -51,6 +52,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 		lossID = parsexml.getValue("lossID");
 		alarmID = parsexml.getValue("alarmID");
 		giftID = parsexml.getValue("giftID");
+		lotNumber = Integer.parseInt(parsexml.getValue("lotNumber"));
 		dateRecord = parsexml.getValue("dateRecord");
 		String dateFormat = parsexml.getValue("dateFormat");
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
@@ -81,12 +83,13 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	}
 
 	/**
-	 * @see dataservice.inventorydataservice.InventoryDataService#returnNumber()
+	 * @see dataservice.inventorydataservice.InventoryDataService#returnLotNumber()
 	 */
 	@Override
-	public String returnNumber() throws RemoteException {
-		// TODO 返回一个盘点的批号
-		return null;
+	public String returnLotNumber() throws RemoteException {
+		lotNumber++;
+		parsexml.setValue("lotNumber", Common.intToString(lotNumber, IDMaxBit));
+		return String.valueOf(lotNumber);
 	}
 
 	public ArrayList<InventoryBillPO> show(BillType type) throws RemoteException {

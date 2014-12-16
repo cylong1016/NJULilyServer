@@ -83,6 +83,7 @@
 		<giftID>ZSD</giftID>
 		<maxID>0</maxID>
 		<IDMaxBit>5</IDMaxBit>
+		<lotNumber>0</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
