@@ -1,9 +1,11 @@
 package data.saledata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.SalesPO;
 import data.TableInfo;
+import dataenum.BillType;
 import dataenum.Storage;
 import dataservice.saledataservice.SaleInfoService;
 
@@ -62,6 +64,20 @@ public class SaleInfo extends TableInfo<SalesPO> implements SaleInfoService {
 	@Override
 	public Storage getStorage(String billID) throws RemoteException {
 		return saleData.find(billID).getStorage();
+	}
+	
+	/**
+	 * @see data.TableInfo#getAllID(dataenum.BillType)
+	 */
+	@Override
+	public ArrayList<String> getAllID(BillType type) throws RemoteException {
+		ArrayList<String> IDs = new ArrayList<String>();
+		for(SalesPO po : pos) {
+			if(po.getType().equals(type)) {
+				IDs.add(po.getID());
+			}
+		}
+		return IDs;
 	}
 
 }

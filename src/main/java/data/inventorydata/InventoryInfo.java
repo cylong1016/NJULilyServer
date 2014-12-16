@@ -1,9 +1,11 @@
 package data.inventorydata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.InventoryBillPO;
 import data.TableInfo;
+import dataenum.BillType;
 import dataservice.inventorydataservice.InventoryInfoService;
 
 /**
@@ -34,6 +36,20 @@ public class InventoryInfo extends TableInfo<InventoryBillPO> implements Invento
 	protected void initPOs() throws RemoteException {
 		inventoryData = new InventoryData();
 		pos = inventoryData.show();
+	}
+
+	/**
+	 * @see data.TableInfo#getAllID(dataenum.BillType)
+	 */
+	@Override
+	public ArrayList<String> getAllID(BillType type) throws RemoteException {
+		ArrayList<String> IDs = new ArrayList<String>();
+		for(InventoryBillPO po : pos) {
+			if (po.getBillType().equals(type)) {
+				IDs.add(po.getID());
+			}
+		}
+		return IDs;
 	}
 
 }

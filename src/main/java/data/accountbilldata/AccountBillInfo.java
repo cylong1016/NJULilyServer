@@ -1,9 +1,11 @@
 package data.accountbilldata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.AccountBillPO;
 import data.TableInfo;
+import dataenum.BillType;
 import dataservice.accountbilldataservice.AccountBillInfoService;
 
 /**
@@ -42,6 +44,17 @@ public class AccountBillInfo extends TableInfo<AccountBillPO> implements Account
 	@Override
 	public String getClient(String billID) throws RemoteException {
 		return accountBillData.find(billID).getClientID();
+	}
+
+	@Override
+	public ArrayList<String> getAllID(BillType type) throws RemoteException {
+		ArrayList<String> IDs = new ArrayList<String>();
+		for(AccountBillPO po : pos) {
+			if (po.getType().equals(type)) {
+				IDs.add(po.getID());
+			}
+		}
+		return IDs;
 	}
 
 }
