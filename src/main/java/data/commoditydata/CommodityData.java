@@ -40,7 +40,6 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 	@Override
 	public void init() throws RemoteException {
 		parsexml = new ParseXML(NAME);
-		prefix = parsexml.getValue("prefix");
 	}
 
 	/**
@@ -53,7 +52,10 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 		}
 		CommoditySortDataService sortData = (CommoditySortDataService)DataFactory.createDataService(CommoditySortDataService.NAME);
 		CommoditySortPO sortPO = sortData.find(fatherID);
-		String newID = sortPO.getID() + "-" + prefix + super.getID();
+		if(sortPO == null) {
+			return null;
+		}
+		String newID = sortPO.getID() + "-" + super.getID();
 		return newID;
 	}
 

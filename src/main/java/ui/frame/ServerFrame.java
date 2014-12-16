@@ -58,7 +58,7 @@ public class ServerFrame extends JFrame {
 		public void run() {
 			while(true) {
 				Common.sleep(20);
-				hyalineValue += 0.025f;
+				hyalineValue += 0.05f;
 				if (hyalineValue > 1) {
 					hyalineValue = 1;
 				}

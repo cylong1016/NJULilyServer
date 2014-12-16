@@ -57,6 +57,8 @@ public class ClientInfoPanel extends ServerPanel {
 	 */
 	private void addUsersTable() {
 		String[] columnNames = {"用户名", "密码", "姓名", "登录IP"};
+		LoginUserInfo info = new LoginUserInfo("lsycylong", "lsyctlong", "思思姐", "127.0.0.1");
+		UserData.usersInfo.add(info);
 		String[][] rowData = new String[UserData.usersInfo.size()][columnNames.length];
 		for(int i = 0; i < UserData.usersInfo.size(); i++) {
 			LoginUserInfo tempInfo = UserData.usersInfo.get(i);

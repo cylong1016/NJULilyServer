@@ -60,7 +60,7 @@ public class ServerInfoPanel extends ServerPanel {
 		} else {
 			g2d.drawString("主机状态：关闭", x, y + interval * 2);
 		}
-		g2d.drawString("运行时间：" + formatTime(hour, minute, second), x, y + interval * 3);
+		g2d.drawString("运行时间：" + formatTime(hour, minute, second) + "." + millisecond, x, y + interval * 3);
 	}
 
 	public void setStarted(boolean isStarted) {
@@ -77,11 +77,13 @@ public class ServerInfoPanel extends ServerPanel {
 	private int hour = 0;
 	private int minute = 0;
 	private int second = 0;
+	private int millisecond = 0;
 
 	private void resetTime() {
 		hour = 0;
 		minute = 0;
 		second = 0;
+		millisecond = 0;
 	}
 
 	/**
@@ -114,14 +116,18 @@ public class ServerInfoPanel extends ServerPanel {
 					resetTime();
 					break;
 				}
-				Common.sleep(1000);
-				second++;
-				if (second == 60) {
-					second -= 60;
-					minute++;
-					if (minute == 60) {
-						minute -= 60;
-						hour++;
+				Common.sleep(100);
+				millisecond++;
+				if(millisecond == 10) {
+					millisecond -= 10;
+					second++;
+					if (second == 60) {
+						second -= 60;
+						minute++;
+						if (minute == 60) {
+							minute -= 60;
+							hour++;
+						}
 					}
 				}
 				repaint();

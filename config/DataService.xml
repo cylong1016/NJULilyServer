@@ -35,13 +35,13 @@
 	<Data>
 		<name>CommodityData</name>
 		<path>data/CommodityList.ser</path>
-		<prefix>SP</prefix>
 		<maxID>00005</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
 		<name>CommoditySortData</name>
 		<path>data/CommoditySortList.ser</path>
+		<prefix>SP</prefix>
 		<maxID>1</maxID>
 		<IDMaxBit>2</IDMaxBit>
 	</Data>

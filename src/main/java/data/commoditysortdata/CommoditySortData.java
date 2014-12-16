@@ -36,10 +36,11 @@ public class CommoditySortData extends CommonData<CommoditySortPO> implements Co
 	public void init() throws RemoteException {
 		parsexml = new ParseXML(NAME);
 		filePath = parsexml.getValue("path");
+		prefix = parsexml.getValue("prefix");
 		File file = new File(filePath);
 		if (!file.exists() || file.length() == 0) {	// 如果不存在保存商品分类的文件，初始化所有商品的父类分类
 			poList = new DefineList<CommoditySortPO>(filePath);
-			CommoditySortPO po = new CommoditySortPO("00", "所有商品分类", null, null, null);
+			CommoditySortPO po = new CommoditySortPO(prefix, "所有商品分类", null, null, null);
 			this.insert(po);
 		}
 	}

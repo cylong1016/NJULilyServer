@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import po.AccountBillPO;
-
 import common.ParseXML;
-
 import data.CommonData;
 import dataenum.BillType;
 import dataservice.accountbilldataservice.AccountBillDataService;
@@ -52,13 +50,13 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 
 	/**
 	 * 根据单据类型获得编号前缀
+	 * @deprecated 最好用getExpenseID() 和 getPayID() 方法
 	 * @param type 单据类型
 	 * @return ID前缀
 	 * @author cylong
 	 * @version 2014年12月2日 上午5:36:32
 	 */
 	@Override
-	// TODO getID未分开
 	protected String getPreID(BillType type) {
 		switch(type) {
 		case EXPENSE:
@@ -82,6 +80,24 @@ public class AccountBillData extends CommonData<AccountBillPO> implements Accoun
 			}
 		}
 		return bills;
+	}
+
+	/**
+	 * @see dataservice.accountbilldataservice.AccountBillDataService#getExpenseID()
+	 */
+	@Override
+	public String getExpenseID() throws RemoteException {
+		String ID = getBillID();
+		return expenseID + "-" + currentDate + "-" + ID;
+	}
+
+	/**
+	 * @see dataservice.accountbilldataservice.AccountBillDataService#getPayID()
+	 */
+	@Override
+	public String getPayID() throws RemoteException {
+		String ID = getBillID();
+		return payID + "-" + currentDate + "-" + ID;
 	}
 
 }
