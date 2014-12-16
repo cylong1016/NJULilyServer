@@ -89,7 +89,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 	public String returnLotNumber() throws RemoteException {
 		lotNumber++;
 		parsexml.setValue("lotNumber", Common.intToString(lotNumber, IDMaxBit));
-		return String.valueOf(lotNumber);
+		return Common.intToString(lotNumber, IDMaxBit);
 	}
 
 	public ArrayList<InventoryBillPO> show(BillType type) throws RemoteException {
