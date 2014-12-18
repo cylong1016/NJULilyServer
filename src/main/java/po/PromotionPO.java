@@ -8,14 +8,13 @@ import dataenum.PromotionType;
 public class PromotionPO extends PersistentObject {
 
 	private static final long serialVersionUID = 1L;
-	/** 促销策略编号 */
-	private String ID;
 	/** 促销起始时间 */
 	private String beginDate;
 	/** 促销结束时间 */
 	private String endDate;
 	/** 特价包 */
 	private ArrayList<CommodityItemPO> bargains;
+	private double beforeTotal;
 	/** 特价包的总价/总价 */
 	private double bargainTotal;
 	/** 客户等级 */
@@ -33,12 +32,13 @@ public class PromotionPO extends PersistentObject {
 	/** 促销策略类型 */
 	private PromotionType type;
 	
-	public PromotionPO(String ID, String beginDate, String endDate, ArrayList<CommodityItemPO> bargains, double bargainTotal,
+	public PromotionPO(String ID, String beginDate, String endDate, ArrayList<CommodityItemPO> bargains, double beforeTotal, double bargainTotal,
 			ClientLevel level, ArrayList<CommodityItemPO> commodities, double total,ArrayList<CommodityItemPO> gifts, double allowance, int voucher) {
 		super(ID);
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.bargains = bargains;
+		this.beforeTotal = beforeTotal;
 		this.bargainTotal = bargainTotal;
 		this.level = level;
 		this.commodities = commodities;
@@ -46,10 +46,6 @@ public class PromotionPO extends PersistentObject {
 		this.gifts = gifts;
 		this.allowance = allowance;
 		this.voucher = voucher;
-	}
-
-	public String getID() {
-		return ID;
 	}
 
 	public ArrayList<CommodityItemPO> getBargains() {
@@ -94,5 +90,9 @@ public class PromotionPO extends PersistentObject {
 
 	public double getBargainTotal() {
 		return bargainTotal;
+	}
+
+	public double getBeforeTotal() {
+		return beforeTotal;
 	}
 }
