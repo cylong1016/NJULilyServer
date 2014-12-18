@@ -27,7 +27,7 @@
 		<path>data/AccountBillList.ser</path>
 		<expenseID>SKD</expenseID>
 		<payID>FKD</payID>
-		<maxID>00001</maxID>
+		<maxID>00003</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141218</dateRecord>
