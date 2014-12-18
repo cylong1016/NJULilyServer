@@ -27,7 +27,7 @@
 		<path>data/AccountBillList.ser</path>
 		<expenseID>SKD</expenseID>
 		<payID>FKD</payID>
-		<maxID>00003</maxID>
+		<maxID>00001</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141219</dateRecord>
@@ -83,7 +83,7 @@
 		<giftID>ZSD</giftID>
 		<maxID>00005</maxID>
 		<IDMaxBit>5</IDMaxBit>
-		<lotNumber>00074</lotNumber>
+		<lotNumber>00075</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
