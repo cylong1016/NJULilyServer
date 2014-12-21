@@ -61,6 +61,7 @@ public class InventoryData extends CommonData<InventoryBillPO> implements Invent
 
 	/**
 	 * 根据单据类型获得编号前缀
+	 * @deprecated 已经分开，不需要判断前缀了
 	 * @param type 单据类型
 	 * @return ID前缀
 	 * @author cylong

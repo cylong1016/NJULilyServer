@@ -72,7 +72,7 @@
 		<maxID>00001</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
-		<dateRecord>20141216</dateRecord>
+		<dateRecord>20141221</dateRecord>
 	</Data>
 	<Data>
 		<name>InventoryData</name>
@@ -83,7 +83,7 @@
 		<giftID>ZSD</giftID>
 		<maxID>00005</maxID>
 		<IDMaxBit>5</IDMaxBit>
-		<lotNumber>00075</lotNumber>
+		<lotNumber>00076</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
