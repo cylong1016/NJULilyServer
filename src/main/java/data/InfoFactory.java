@@ -17,6 +17,7 @@ import dataservice.TableInfoService;
 public class InfoFactory {
 
 	/**
+	 * 注意：在jdk1.7之后的版本才支持case String
 	 * @param name info的name
 	 * @return 对应的TableInfoService实例
 	 * @throws RemoteException
