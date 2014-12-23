@@ -21,13 +21,6 @@ public interface CommonDataService<PO extends PersistentObject> extends DataServ
 	public ResultMessage insert(PO po) throws RemoteException;
 
 	/**
-	 * 根据ID查找po
-	 * @param ID
-	 * @return 持久化数据，如果返回 null则不存在
-	 */
-	public PO find(String ID) throws RemoteException;
-
-	/**
 	 * 根据ID删除
 	 * @param ID
 	 * @return 处理结果

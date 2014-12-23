@@ -12,7 +12,7 @@
 		<path>data/UserList.ser</path>
 		<prefix>YH</prefix>
 		<initID>1</initID>
-		<maxID>00021</maxID>
+		<maxID>00022</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -83,7 +83,7 @@
 		<giftID>ZSD</giftID>
 		<maxID>00005</maxID>
 		<IDMaxBit>5</IDMaxBit>
-		<lotNumber>00076</lotNumber>
+		<lotNumber>00077</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
