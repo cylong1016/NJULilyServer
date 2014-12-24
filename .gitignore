@@ -24,3 +24,5 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 /bin
+jre
+run.bat
