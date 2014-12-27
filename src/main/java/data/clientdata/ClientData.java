@@ -4,10 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import common.ParseXML;
-import message.ResultMessage;
 import po.ClientPO;
 import data.CommonData;
 import dataenum.FindTypeClient;
+import dataenum.ResultMessage;
 import dataservice.clientdataservice.ClientDataService;
 
 /**

@@ -25,4 +25,4 @@ pom.xml.next
 release.properties
 /bin
 jre
-run.bat
+server_run.bat

@@ -7,12 +7,10 @@ import java.rmi.server.RemoteServer;
 import java.rmi.server.ServerNotActiveException;
 import java.util.ArrayList;
 
-import message.ResultMessage;
 import po.UserPO;
-
 import common.ParseXML;
-
 import data.CommonData;
+import dataenum.ResultMessage;
 import dataenum.UserIdentity;
 import dataservice.userdataservice.AdminInfo;
 import dataservice.userdataservice.LoginInfo;

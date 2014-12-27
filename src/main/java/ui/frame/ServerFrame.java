@@ -1,5 +1,6 @@
 package ui.frame;
 
+import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -35,10 +36,9 @@ public class ServerFrame extends JFrame {
 		this.add(start);
 		// 标题栏
 		title = new TitlePanel(this);
-		this.add(title);
+		this.add(title, BorderLayout.NORTH);
 		this.setTitle(SystemConfig.TITLE);
 		this.setSize(UIConfig.WIDTH, UIConfig.HEIGHT);
-		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setUndecorated(true);

@@ -5,9 +5,9 @@ import java.rmi.RemoteException;
 
 import common.DefineList;
 import common.ParseXML;
-import message.ResultMessage;
 import po.CommoditySortPO;
 import data.CommonData;
+import dataenum.ResultMessage;
 import dataservice.commoditysortdataservice.CommoditySortDataService;
 
 /**

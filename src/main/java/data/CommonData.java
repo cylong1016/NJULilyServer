@@ -4,12 +4,12 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import message.ResultMessage;
 import po.PersistentObject;
 import common.Common;
 import common.DefineList;
 import common.ParseXML;
 import dataenum.BillType;
+import dataenum.ResultMessage;
 import dataservice.CommonDataService;
 
 /**
