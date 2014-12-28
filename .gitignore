@@ -26,6 +26,7 @@ release.properties
 /bin
 jre
 server_run.bat
+NJULilyServer.jar
 data
 config/DataService.xml
 config/Admin.xml
