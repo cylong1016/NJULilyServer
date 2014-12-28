@@ -3,15 +3,13 @@ package data.commoditydata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import message.ResultMessage;
 import po.CommodityPO;
 import po.CommoditySortPO;
-
 import common.ParseXML;
-
 import data.CommonData;
 import data.DataFactory;
 import dataenum.FindTypeCommo;
+import dataenum.ResultMessage;
 import dataservice.commoditydataservice.CommodityDataService;
 import dataservice.commoditysortdataservice.CommoditySortDataService;
 

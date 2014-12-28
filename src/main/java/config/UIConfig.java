@@ -71,7 +71,7 @@ public class UIConfig {
 
 	/*----------------------------表格配置--------------------------------*/
 	/** 表格字体 */
-	public static Font TABLE_FONT = new Font("黑体", Font.PLAIN, 18);
+	public static Font TABLE_FONT = new Font("黑体", Font.PLAIN, 13);
 	/** 表格字体颜色 */
 	public static Color TABLE_FORE_COLOR = Color.BLACK;
 	/** 表格边框颜色 */

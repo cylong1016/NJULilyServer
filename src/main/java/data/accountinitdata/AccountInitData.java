@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import common.Common;
 import common.DefineList;
 import common.ParseXML;
-import message.ResultMessage;
 import po.AccountaInitPO;
+import dataenum.ResultMessage;
 import dataservice.accountinitdataservice.AccountInitDataService;
 
 /**

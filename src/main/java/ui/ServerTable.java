@@ -191,12 +191,12 @@ public class ServerTable extends JPanel {
 	protected void initScrollPane() {
 		scrollPane = new JScrollPane();
 		scrollPane.setSize(getWidth(), getHeight()); // 和panel一样大
-		scrollPane.setViewportView(infoTable);// 装载表格
+		scrollPane.setViewportView(infoTable);	// 装载表格
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane.getViewport().setOpaque(false);// 将JScrollPane设置为透明
-		scrollPane.setOpaque(false);// 将中间的viewport设置为透明
-		scrollPane.setColumnHeaderView(infoTable.getTableHeader());// 设置头部（HeaderView部分）
-		scrollPane.getColumnHeader().setOpaque(false);// 再取出头部，并设置为透明
+		scrollPane.getViewport().setOpaque(false);	// 将中间的viewport设置为透明
+		scrollPane.setOpaque(false);	// 将JScrollPane设置为透明
+		scrollPane.setColumnHeaderView(infoTable.getTableHeader());	// 设置头部（HeaderView部分）
+		scrollPane.getColumnHeader().setOpaque(false);	// 再取出头部，并设置为透明
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		scrollPane.addMouseWheelListener(new MouseWheelListener() {
 

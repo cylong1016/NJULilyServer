@@ -6,7 +6,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -25,3 +24,5 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 /bin
+jre
+server_run.bat
