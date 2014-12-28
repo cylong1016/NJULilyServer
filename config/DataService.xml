@@ -4,7 +4,7 @@
 		<name>ClientData</name>
 		<path>data/ClientList.ser</path>
 		<prefix>KH</prefix>
-		<maxID>00003</maxID>
+		<maxID>00004</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -35,7 +35,7 @@
 	<Data>
 		<name>CommodityData</name>
 		<path>data/CommodityList.ser</path>
-		<maxID>00012</maxID>
+		<maxID>00002</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -72,7 +72,7 @@
 		<maxID>00001</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
-		<dateRecord>20141221</dateRecord>
+		<dateRecord>20141229</dateRecord>
 	</Data>
 	<Data>
 		<name>InventoryData</name>

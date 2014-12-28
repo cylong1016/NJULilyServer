@@ -26,3 +26,6 @@ release.properties
 /bin
 jre
 server_run.bat
+data
+config/DataService.xml
+config/Admin.xml
