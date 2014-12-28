@@ -81,9 +81,9 @@
 		<lossID>BSD</lossID>
 		<alarmID>BJD</alarmID>
 		<giftID>ZSD</giftID>
-		<maxID>00005</maxID>
+		<maxID>00006</maxID>
 		<IDMaxBit>5</IDMaxBit>
-		<lotNumber>00076</lotNumber>
+		<lotNumber>00117</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
