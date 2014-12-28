@@ -144,10 +144,9 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public PO find(String ID) throws RemoteException {
-		for(PO po : poList.getInList()) {
-			if (po.getID().equals(ID)) {
-				return po;
-			}
+		int index = findIndex(ID);
+		if (index != -1) {
+			return poList.get(index);
 		}
 		return null;
 	}
@@ -157,11 +156,10 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public ResultMessage delete(String ID) throws RemoteException {
-		for(int i = 0; i < poList.size(); i++) {
-			if (poList.get(i).getID().equals(ID)) {
-				poList.remove(i);
-				return ResultMessage.SUCCESS;
-			}
+		int index = findIndex(ID);
+		if (index != -1) {
+			poList.remove(index);
+			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAILURE;
 	}
@@ -171,12 +169,10 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public ResultMessage update(PO po) throws RemoteException {
-		for(int i = 0; i < poList.size(); i++) {
-			PO temp = poList.get(i);
-			if (temp.getID().equals(po.getID())) {
-				poList.set(i, po);
-				return ResultMessage.SUCCESS;
-			}
+		int index = findIndex(po.getID());
+		if (index != -1) {
+			poList.set(index, po);
+			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAILURE;
 	}
@@ -187,6 +183,35 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	@Override
 	public ArrayList<PO> show() throws RemoteException {
 		return poList.getInList();
+	}
+
+	/**
+	 * 根据ID查找集合中的元素（二分法查找）
+	 * @param ID
+	 * @return 元素的索引，不存在就返回-1
+	 * @author cylong
+	 * @version 2014年12月28日 下午11:38:44
+	 */
+	private int findIndex(String ID) {
+		return binaryFind(0, poList.size() - 1, ID);
+	}
+
+	private int binaryFind(int left, int right, String ID) {
+		int index = -1;
+		if (right >= left) {
+			int middle = (left + right) >> 1;
+			PO po = poList.get(middle);
+			if (po.getID().compareTo(ID) > 0) {
+				middle--;
+				index = binaryFind(left, middle, ID);
+			} else if (po.getID().compareTo(ID) < 0) {
+				middle++;
+				index = binaryFind(middle, right, ID);
+			} else if(po.getID().compareTo(ID) == 0) {
+				index = middle;
+			}
+		}
+		return index;
 	}
 
 }

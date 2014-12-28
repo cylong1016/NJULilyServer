@@ -35,7 +35,7 @@ public class AccountBillDataTest {
 	@Test
 	public void testGetExpenseID() throws RemoteException {
 		accountBill = new AccountBillData();
-//		System.out.println(accountBill.getExpenseID());
+		System.out.println(accountBill.getExpenseID());
 	}
 
 	/**
@@ -45,12 +45,12 @@ public class AccountBillDataTest {
 	@Test
 	public void testGetPayID() throws RemoteException {
 		accountBill = new AccountBillData();
-//		System.out.println(accountBill.getPayID());
+		System.out.println(accountBill.getPayID());
 	}
 
 	/**
 	 * Test method for {@link data.CommonData#show()}.
-	 * @throws RemoteException 
+	 * @throws RemoteException
 	 */
 	@Test
 	public void testShow() throws RemoteException {

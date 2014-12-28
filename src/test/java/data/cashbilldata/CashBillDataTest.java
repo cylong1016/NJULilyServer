@@ -9,18 +9,16 @@ import org.junit.Test;
 
 import po.CashBillPO;
 
-
 /**
- * 
  * @author cylong
- * @version 2014年12月18日  上午12:06:41
+ * @version 2014年12月18日 上午12:06:41
  */
 public class CashBillDataTest {
 
 	/**
 	 * @throws java.lang.Exception
 	 * @author cylong
-	 * @version 2014年12月18日  上午12:06:41
+	 * @version 2014年12月18日 上午12:06:41
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -29,7 +27,7 @@ public class CashBillDataTest {
 	/**
 	 * @throws java.lang.Exception
 	 * @author cylong
-	 * @version 2014年12月18日  上午12:06:41
+	 * @version 2014年12月18日 上午12:06:41
 	 */
 	@After
 	public void tearDown() throws Exception {
@@ -39,10 +37,10 @@ public class CashBillDataTest {
 	public void test() throws RemoteException {
 		System.out.println(new CashBillData().getID());
 	}
-	
+
 	/**
 	 * Test method for {@link data.CommonData#show()}.
-	 * @throws RemoteException 
+	 * @throws RemoteException
 	 */
 	@Test
 	public void testShow() throws RemoteException {

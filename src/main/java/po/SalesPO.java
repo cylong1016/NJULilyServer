@@ -119,4 +119,16 @@ public class SalesPO extends PersistentObject {
 		this.state = state;
 	}
 
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SalesPO [clientID=" + this.clientID + ", client=" + this.client + ", storage=" + this.storage
+				+ ", salesman=" + this.salesman + ", user=" + this.user + ", commodities=" + this.commodities
+				+ ", beforePrice=" + this.beforePrice + ", allowance=" + this.allowance + ", voucher=" + this.voucher
+				+ ", afterPrice=" + this.afterPrice + ", remark=" + this.remark + ", type=" + this.type + ", state="
+				+ this.state + ", ID=" + this.ID + "]";
+	}
+
 }

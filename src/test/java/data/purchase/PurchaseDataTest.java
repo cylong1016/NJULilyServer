@@ -10,18 +10,16 @@ import org.junit.Test;
 import po.PurchasePO;
 import data.purchasedata.PurchaseData;
 
-
 /**
- * 
  * @author cylong
- * @version 2014年12月19日  上午12:12:45
+ * @version 2014年12月19日 上午12:12:45
  */
 public class PurchaseDataTest {
 
 	/**
 	 * @throws java.lang.Exception
 	 * @author cylong
-	 * @version 2014年12月19日  上午12:12:45
+	 * @version 2014年12月19日 上午12:12:45
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -30,7 +28,7 @@ public class PurchaseDataTest {
 	/**
 	 * @throws java.lang.Exception
 	 * @author cylong
-	 * @version 2014年12月19日  上午12:12:45
+	 * @version 2014年12月19日 上午12:12:45
 	 */
 	@After
 	public void tearDown() throws Exception {
@@ -38,7 +36,7 @@ public class PurchaseDataTest {
 
 	/**
 	 * Test method for {@link data.CommonData#show()}.
-	 * @throws RemoteException 
+	 * @throws RemoteException
 	 */
 	@Test
 	public void testShow() throws RemoteException {

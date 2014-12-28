@@ -12,7 +12,7 @@
 		<path>data/UserList.ser</path>
 		<prefix>YH</prefix>
 		<initID>1</initID>
-		<maxID>00034</maxID>
+		<maxID>00035</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -59,7 +59,7 @@
 		<path>data/SaleList.ser</path>
 		<saleID>XSD</saleID>
 		<salebackID>XSTHD</salebackID>
-		<maxID>00001</maxID>
+		<maxID>00010</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141227</dateRecord>
