@@ -83,11 +83,8 @@
 		<giftID>ZSD</giftID>
 		<maxID>00006</maxID>
 		<IDMaxBit>5</IDMaxBit>
-<<<<<<< HEAD
 		<lotNumber>00117</lotNumber>
-=======
 		<lotNumber>00079</lotNumber>
->>>>>>> origin/master
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
