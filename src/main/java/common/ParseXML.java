@@ -39,7 +39,7 @@ public class ParseXML implements Serializable {
 	private Element theData;
 	private Element root;
 	private Document xmldoc;
-	private String xmlPath = "config/DataService.xml";
+	private String xmlPath = "data/DataService.xml";
 
 	public ParseXML(String name) {
 		init(xmlPath, name);
