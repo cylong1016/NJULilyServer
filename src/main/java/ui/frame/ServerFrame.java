@@ -120,13 +120,6 @@ public class ServerFrame extends JFrame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (osName.contains("Mac")) {
-			try {
-				String lookAndfeel = "com.sun.java.swing.plaf.mac.MacLookAndFeel";
-				UIManager.setLookAndFeel(lookAndfeel);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }
