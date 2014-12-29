@@ -33,7 +33,7 @@ public class ServerFrame extends JFrame {
 
 	public ServerFrame() {
 		StartPanel start = new StartPanel();
-		this.add(start);
+		this.add(start, BorderLayout.CENTER);
 		// 标题栏
 		title = new TitlePanel(this);
 		this.add(title, BorderLayout.NORTH);

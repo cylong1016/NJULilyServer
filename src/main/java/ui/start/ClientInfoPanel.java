@@ -1,18 +1,16 @@
 package ui.start;
 
 import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
-import javax.swing.border.TitledBorder;
+import javax.swing.ImageIcon;
 
 import ui.ServerButton;
 import ui.ServerPanel;
 import ui.ServerTable;
-import config.UIConfig;
 import data.userdata.LoginUserInfo;
 import data.userdata.UserData;
 
@@ -38,14 +36,16 @@ public class ClientInfoPanel extends ServerPanel {
 
 	/** 刷新信息按钮 */
 	private ServerButton refreshBtn;
+	/** 刷新按钮图片 */
+	private static final Image IMG_REFRESH_TEXT = new ImageIcon("images/refresh_text.png").getImage();
 	/** 刷新按钮的大小 */
-	private Dimension btnDimen = new Dimension(100, 30);
+	private Dimension btnDimen = new Dimension(IMG_REFRESH_TEXT.getWidth(null), IMG_REFRESH_TEXT.getHeight(null));
 	/** 刷新按钮的位置 */
-	private Point btnPoint = new Point((dimension.width - btnDimen.width) / 2, dimension.height - btnDimen.height - 10);
+	private Point btnPoint = new Point((dimension.width - btnDimen.width) / 2, dimension.height - btnDimen.height - 0);
 
 	public ClientInfoPanel() {
 		this.setSize(dimension);
-		this.setBorder(BorderFactory.createTitledBorder(getBorder(), "客户端信息", TitledBorder.CENTER, TitledBorder.TOP, UIConfig.TEXT_FONT));
+		// this.setBorder(BorderFactory.createTitledBorder(getBorder(), "客户端信息", TitledBorder.CENTER, TitledBorder.TOP, UIConfig.TEXT_FONT));
 		this.addUsersTable();
 		this.addRefreshBtn();
 	}
@@ -75,8 +75,7 @@ public class ClientInfoPanel extends ServerPanel {
 	}
 
 	private void addRefreshBtn() {
-		refreshBtn = new ServerButton("刷新信息");
-		refreshBtn.setFont(new Font("黑体", Font.PLAIN, 20));	// 文本字体
+		refreshBtn = new ServerButton(IMG_REFRESH_TEXT);
 		refreshBtn.setSize(btnDimen);
 		refreshBtn.setLocation(btnPoint);
 		refreshBtn.addMouseListener(new MouseAdapter() {

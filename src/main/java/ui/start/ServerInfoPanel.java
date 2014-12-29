@@ -5,9 +5,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.swing.BorderFactory;
-import javax.swing.border.TitledBorder;
-
 import ui.ServerPanel;
 
 import common.Common;
@@ -43,7 +40,7 @@ public class ServerInfoPanel extends ServerPanel {
 		this.isStarted = isStarted;
 		this.setSize(dimension);
 		this.setBackground(UIConfig.TEXT_BACK_COLOR);
-		this.setBorder(BorderFactory.createTitledBorder(getBorder(), "服务器信息", TitledBorder.CENTER, TitledBorder.TOP, UIConfig.TEXT_FONT));
+		// this.setBorder(BorderFactory.createTitledBorder(getBorder(), "服务器信息", TitledBorder.CENTER, TitledBorder.TOP, UIConfig.TEXT_FONT));
 	}
 
 	@Override
