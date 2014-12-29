@@ -134,6 +134,9 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public ResultMessage insert(PO po) throws RemoteException {
+		if(po.getID() == null) {
+			return ResultMessage.FAILURE;
+		}
 		poList.add(po);
 		addID();
 		return ResultMessage.SUCCESS;
