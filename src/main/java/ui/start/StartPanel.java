@@ -94,7 +94,7 @@ public class StartPanel extends ServerPanel {
 	private class ButtonListener extends MouseAdapter {
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mousePressed(MouseEvent e) {
 			if (e.getSource() == startBtn) {
 				if (!server.isStarted()) {
 					startBtn.setEnabled(false);

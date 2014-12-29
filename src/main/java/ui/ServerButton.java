@@ -27,9 +27,9 @@ public class ServerButton extends JLabel {
 	private static final Image IMG_BUTTON_1 = new ImageIcon("images/button_1.png").getImage();
 	/** 移动到按钮上的背景图片 */
 	private static final Image IMG_BUTTON_2 = new ImageIcon("images/button_2.png").getImage();
-	
+
 	/** 是否移动到按钮上 */
-	private boolean isMoved = false;
+	private boolean isEntered = false;
 	/** 按钮大小，由传进来的文本图片决定 */
 	private Dimension dimension;
 
@@ -62,7 +62,7 @@ public class ServerButton extends JLabel {
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if(isMoved) {
+		if (isEntered) {
 			g.drawImage(IMG_BUTTON_2, 0, 0, dimension.width, dimension.height, this);
 		} else {
 			g.drawImage(IMG_BUTTON_1, 0, 0, dimension.width, dimension.height, this);
@@ -74,7 +74,7 @@ public class ServerButton extends JLabel {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			isMoved = true;
+			isEntered = true;
 			if (ServerButton.this.isEnabled()) {
 				ServerButton.this.setBackground(UIConfig.ENTERED_BTN_BACK_COLOR);
 			}
@@ -82,24 +82,21 @@ public class ServerButton extends JLabel {
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			isMoved = false;
+			isEntered = false;
 			if (ServerButton.this.isEnabled()) {
 				ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
 			}
 		}
-		
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			isMoved = false;
-		}
 
 		public void mousePressed(MouseEvent e) {
+			isEntered = false;
 			if (ServerButton.this.isEnabled()) {
 				ServerButton.this.setBackground(UIConfig.BTN_BACK_COLOR);
 			}
 		}
 
 		public void mouseReleased(MouseEvent e) {
+			isEntered = true;
 			if (ServerButton.this.isEnabled()) {
 				ServerButton.this.setBackground(UIConfig.ENTERED_BTN_BACK_COLOR);
 			}

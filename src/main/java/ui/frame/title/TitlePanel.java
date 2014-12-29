@@ -40,7 +40,6 @@ public class TitlePanel extends JPanel {
 	public TitlePanel(ServerFrame frame) {
 		this.frame = frame;
 		this.setLayout(new FlowLayout(FlowLayout.RIGHT, interval, interval));
-		this.setOpaque(true);
 		// 和图片一样大
 		this.setPreferredSize(new Dimension(IMG_TITLE.getWidth(null), IMG_TITLE.getHeight(null)));
 		addTitleButton(); // 添加最大化最小化按钮
