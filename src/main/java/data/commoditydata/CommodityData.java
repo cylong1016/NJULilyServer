@@ -179,5 +179,19 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 		}
 		return super.delete(ID);
 	}
+	
+	/**
+	 * 由于分类的编号不是按照顺序，所以二分法查找会不正确
+	 * @see data.CommonData#findIndex(java.lang.String)
+	 */
+	protected int findIndex(String ID) {
+		for(int i = 0; i < poList.size(); i++) {
+			CommodityPO po = poList.get(i);
+			if (po.getID().equals(ID)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 }
