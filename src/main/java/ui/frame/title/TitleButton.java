@@ -19,7 +19,7 @@ public class TitleButton extends JLabel {
 	private static final long serialVersionUID = 7046202963400208918L;
 
 	/** 按钮大小 */
-	private Dimension size = new Dimension(32, 16);
+	private Dimension size = new Dimension(32, 20);
 
 	public TitleButton() {
 		this.setPreferredSize(size);

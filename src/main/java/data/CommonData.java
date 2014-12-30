@@ -134,6 +134,9 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public ResultMessage insert(PO po) throws RemoteException {
+		if(po.getID() == null) {
+			return ResultMessage.FAILURE;
+		}
 		poList.add(po);
 		addID();
 		return ResultMessage.SUCCESS;
@@ -192,7 +195,7 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 * @author cylong
 	 * @version 2014年12月28日 下午11:38:44
 	 */
-	private int findIndex(String ID) {
+	protected int findIndex(String ID) {
 		return binaryFind(0, poList.size() - 1, ID);
 	}
 

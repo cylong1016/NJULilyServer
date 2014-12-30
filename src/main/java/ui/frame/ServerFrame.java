@@ -33,7 +33,7 @@ public class ServerFrame extends JFrame {
 
 	public ServerFrame() {
 		StartPanel start = new StartPanel();
-		this.add(start);
+		this.add(start, BorderLayout.CENTER);
 		// 标题栏
 		title = new TitlePanel(this);
 		this.add(title, BorderLayout.NORTH);
@@ -116,13 +116,6 @@ public class ServerFrame extends JFrame {
 		if (osName.contains("Windows")) {
 			try {
 				String lookAndfeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
-				UIManager.setLookAndFeel(lookAndfeel);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (osName.contains("Mac")) {
-			try {
-				String lookAndfeel = "com.sun.java.swing.plaf.mac.MacLookAndFeel";
 				UIManager.setLookAndFeel(lookAndfeel);
 			} catch (Exception e) {
 				e.printStackTrace();

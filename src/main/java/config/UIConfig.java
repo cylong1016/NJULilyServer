@@ -57,14 +57,14 @@ public class UIConfig {
 	/** button背景颜色 */
 	public static Color BTN_BACK_COLOR = Color.LIGHT_GRAY;
 	/** 移动到button上的背景颜色 */
-	public static Color ENTERED_BTN_BACK_COLOR = Color.GRAY;
+	public static Color ENTERED_BTN_BACK_COLOR = new Color(0xEA6060);
 	/*----------------------------通用按钮配置--------------------------------*/
 	
 	/*----------------------------文本配置--------------------------------*/
 	/** 文本字体 */
 	public static Font TEXT_FONT = new Font("黑体", Font.PLAIN, 20);
 	/** 文本字体颜色 */
-	public static Color TEXT_FORE_COLOR = new Color(0x000000);
+	public static Color TEXT_FORE_COLOR = new Color(0xFFFFFF);
 	/** 文本背景颜色 */
 	public static Color TEXT_BACK_COLOR = new Color(0xEEEEEE);
 	/*----------------------------文本配置--------------------------------*/
@@ -73,13 +73,13 @@ public class UIConfig {
 	/** 表格字体 */
 	public static Font TABLE_FONT = new Font("黑体", Font.PLAIN, 13);
 	/** 表格字体颜色 */
-	public static Color TABLE_FORE_COLOR = Color.BLACK;
+	public static Color TABLE_FORE_COLOR = Color.WHITE;
 	/** 表格边框颜色 */
-	public static Color TABLE_BORDER_COLOR = Color.BLACK;
+	public static Color TABLE_BORDER_COLOR = Color.LIGHT_GRAY;
 	/** 表头前景颜色 */
-	public static Color TABLE_HEADER_FORE_COLOR = Color.BLACK;
+	public static Color TABLE_HEADER_FORE_COLOR = Color.WHITE;
 	/** 表头背景颜色 */
-	public static Color TABLE_HEADER_BACK_COLOR = Color.LIGHT_GRAY;
+	public static Color TABLE_HEADER_BACK_COLOR = new Color(0x22355F);
 	/** 选择后的前景色 */
 	public static Color TABLE_SELECTIONFORE = Color.BLACK;
 	/*----------------------------表格配置--------------------------------*/
