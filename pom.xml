@@ -58,6 +58,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
@@ -70,9 +71,7 @@
 						</manifest>
 					</archive>
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
