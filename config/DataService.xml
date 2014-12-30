@@ -69,7 +69,7 @@
 		<path>data/PurchaseList.ser</path>
 		<purchaseID>JHD</purchaseID>
 		<purchasebackID>JHTHD</purchasebackID>
-		<maxID>00001</maxID>
+		<maxID>00002</maxID>
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141229</dateRecord>
@@ -83,7 +83,7 @@
 		<giftID>ZSD</giftID>
 		<maxID>00006</maxID>
 		<IDMaxBit>5</IDMaxBit>
-		<lotNumber>00127</lotNumber>
+		<lotNumber>00131</lotNumber>
 		<lotNumber>00079</lotNumber>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
@@ -92,14 +92,14 @@
 		<name>AccountInitData</name>
 		<path>data/AccountInitList.ser</path>
 		<prefix>INIT</prefix>
-		<maxID>0</maxID>
+		<maxID>00001</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
 		<name>PromotionData</name>
 		<path>data/PromotionList.ser</path>
 		<prefix>CXCL</prefix>
-		<maxID>0</maxID>
+		<maxID>00006</maxID>
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 </Config>
