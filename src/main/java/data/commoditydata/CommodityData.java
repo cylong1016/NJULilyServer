@@ -140,7 +140,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 				}
 			}
 			break;
-		case TYPE:
+		case TYPE: // 改成商品的分类不是类型 TODO
 			for(CommodityPO commodity : poList.getInList()) {
 				if (commodity.getType().toLowerCase().contains(keywords)) {
 					commodities.add(commodity);
