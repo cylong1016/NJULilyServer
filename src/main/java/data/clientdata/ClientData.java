@@ -57,8 +57,7 @@ public class ClientData extends CommonData<ClientPO> implements ClientDataServic
 				return ResultMessage.FAILURE;
 			}
 		}
-		super.insert(po);
-		return ResultMessage.SUCCESS;
+		return super.insert(po);
 	}
 
 	/**

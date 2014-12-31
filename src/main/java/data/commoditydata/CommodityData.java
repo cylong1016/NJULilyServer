@@ -5,13 +5,14 @@ import java.util.ArrayList;
 
 import po.CommodityPO;
 import po.CommoditySortPO;
+
 import common.ParseXML;
+
 import data.CommonData;
-import data.DataFactory;
+import data.commoditysortdata.CommoditySortData;
 import dataenum.FindTypeCommo;
 import dataenum.ResultMessage;
 import dataservice.commoditydataservice.CommodityDataService;
-import dataservice.commoditysortdataservice.CommoditySortDataService;
 
 /**
  * @see dataservice.commoditydataservice.CommodityDataService
@@ -48,13 +49,25 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 		if (fatherID == null) {
 			return null;
 		}
-		CommoditySortDataService sortData = (CommoditySortDataService)DataFactory.createDataService(CommoditySortDataService.NAME);
-		CommoditySortPO sortPO = sortData.find(fatherID);
-		if(sortPO == null) {
+		CommoditySortPO sortPO = getSort(fatherID);
+		if (sortPO == null) {
 			return null;
 		}
 		String newID = sortPO.getID() + "-" + super.getID();
 		return newID;
+	}
+
+	/**
+	 * 根据分类ID查找该分类
+	 * @param sortID
+	 * @return
+	 * @author cylong
+	 * @version 2014年12月31日 下午8:13:41
+	 * @throws RemoteException
+	 */
+	private CommoditySortPO getSort(String sortID) throws RemoteException {
+		CommoditySortData sortData = new CommoditySortData();
+		return sortData.find(sortID);
 	}
 
 	/**
@@ -70,8 +83,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 				return ResultMessage.FAILURE;
 			}
 		}
-		super.insert(po);
-		return ResultMessage.SUCCESS;
+		return super.insert(po);
 	}
 
 	/**
@@ -84,7 +96,9 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 		keywords = keywords.toLowerCase(); // 为了不区分大小写
 		if (type == null) {	// 查询商品全部信息
 			for(CommodityPO commodity : poList.getInList()) {
-				if (commodity.toString().toLowerCase().contains(keywords)) {
+				String sortName = getSort(commodity.getSortID()).getName();
+				String commodityInfo = commodity.toString() + "," + sortName;
+				if (commodityInfo.toLowerCase().contains(keywords)) {
 					commodities.add(commodity);
 				}
 			}
@@ -140,9 +154,10 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 				}
 			}
 			break;
-		case TYPE: // 改成商品的分类不是类型 TODO
+		case SORT: // 查询时候改成商品的分类不是类型 
 			for(CommodityPO commodity : poList.getInList()) {
-				if (commodity.getType().toLowerCase().contains(keywords)) {
+				CommoditySortPO sortPO = getSort(commodity.getSortID());
+				if (sortPO.getName().toLowerCase().contains(keywords)) {
 					commodities.add(commodity);
 				}
 			}
@@ -179,7 +194,7 @@ public class CommodityData extends CommonData<CommodityPO> implements CommodityD
 		}
 		return super.delete(ID);
 	}
-	
+
 	/**
 	 * 由于分类的编号不是按照顺序，所以二分法查找会不正确
 	 * @see data.CommonData#findIndex(java.lang.String)

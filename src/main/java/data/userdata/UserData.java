@@ -65,8 +65,7 @@ public class UserData extends CommonData<UserPO> implements UserDataService {
 				return ResultMessage.FAILURE;
 			}
 		}
-		super.insert(po);
-		return ResultMessage.SUCCESS;
+		return super.insert(po);
 	}
 
 	/**

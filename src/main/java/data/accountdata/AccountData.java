@@ -57,8 +57,7 @@ public class AccountData extends CommonData<AccountPO> implements AccountDataSer
 				return ResultMessage.FAILURE;
 			}
 		}
-		super.insert(po);
-		return ResultMessage.SUCCESS;
+		return super.insert(po);
 	}
 
 	/**
