@@ -12,7 +12,15 @@
 		<path>data/UserList.ser</path>
 		<prefix>YH</prefix>
 		<initID>1</initID>
+<<<<<<< Updated upstream
 		<maxID>00001</maxID>
+=======
+<<<<<<< Updated upstream
+		<maxID>00001</maxID>
+=======
+		<maxID>00000</maxID>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
@@ -69,7 +77,11 @@
 		<path>data/PurchaseList.ser</path>
 		<purchaseID>JHD</purchaseID>
 		<purchasebackID>JHTHD</purchasebackID>
+<<<<<<< Updated upstream
 		<maxID>00002</maxID>
+=======
+		<maxID>00001</maxID>
+>>>>>>> Stashed changes
 		<IDMaxBit>5</IDMaxBit>
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141229</dateRecord>
@@ -83,8 +95,17 @@
 		<giftID>ZSD</giftID>
 		<maxID>00006</maxID>
 		<IDMaxBit>5</IDMaxBit>
+<<<<<<< Updated upstream
 		<lotNumber>00131</lotNumber>
 		<lotNumber>00079</lotNumber>
+=======
+<<<<<<< Updated upstream
+		<lotNumber>00127</lotNumber>
+		<lotNumber>00079</lotNumber>
+=======
+		<lotNumber>00076</lotNumber>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 		<dateFormat>yyyyMMdd</dateFormat>
 		<dateRecord>20141111</dateRecord>
 	</Data>
@@ -92,14 +113,22 @@
 		<name>AccountInitData</name>
 		<path>data/AccountInitList.ser</path>
 		<prefix>INIT</prefix>
+<<<<<<< Updated upstream
 		<maxID>00001</maxID>
+=======
+		<maxID>0</maxID>
+>>>>>>> Stashed changes
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 	<Data>
 		<name>PromotionData</name>
 		<path>data/PromotionList.ser</path>
 		<prefix>CXCL</prefix>
+<<<<<<< Updated upstream
 		<maxID>00006</maxID>
+=======
+		<maxID>0</maxID>
+>>>>>>> Stashed changes
 		<IDMaxBit>5</IDMaxBit>
 	</Data>
 </Config>
