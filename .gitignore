@@ -25,6 +25,5 @@ pom.xml.next
 release.properties
 /bin
 jre
-server_run.bat
-NJULilyServer.jar
+server_run_nojre.bat
 data
