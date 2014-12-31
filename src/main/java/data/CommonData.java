@@ -134,7 +134,7 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 */
 	@Override
 	public ResultMessage insert(PO po) throws RemoteException {
-		if(po.getID() == null) {
+		if (po.getID() == null) {
 			return ResultMessage.FAILURE;
 		}
 		poList.add(po);
@@ -196,10 +196,36 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 	 * @version 2014年12月28日 下午11:38:44
 	 */
 	protected int findIndex(String ID) {
-		return binaryFind(0, poList.size() - 1, ID);
+		return orderFind(ID);
 	}
 
-	private int binaryFind(int left, int right, String ID) {
+	/**
+	 * 顺序查找
+	 * @param ID
+	 * @return
+	 * @author cylong
+	 * @version 2014年12月31日 下午7:02:44
+	 */
+	protected int orderFind(String ID) {
+		for(int i = 0; i < poList.size(); i++) {
+			PO po = poList.get(i);
+			if (po.getID().equals(ID)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	/**
+	 * 二分查找
+	 * @param left
+	 * @param right
+	 * @param ID
+	 * @return
+	 * @author cylong
+	 * @version 2014年12月31日 下午7:02:52
+	 */
+	protected int binaryFind(int left, int right, String ID) {
 		int index = -1;
 		if (right >= left) {
 			int middle = (left + right) >> 1;
@@ -210,7 +236,7 @@ public abstract class CommonData<PO extends PersistentObject> extends UnicastRem
 			} else if (po.getID().compareTo(ID) < 0) {
 				middle++;
 				index = binaryFind(middle, right, ID);
-			} else if(po.getID().compareTo(ID) == 0) {
+			} else if (po.getID().compareTo(ID) == 0) {
 				index = middle;
 			}
 		}
