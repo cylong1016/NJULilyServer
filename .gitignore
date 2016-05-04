@@ -26,4 +26,4 @@ release.properties
 /bin
 jre
 server_run_nojre.bat
-data
+data/*.ser
